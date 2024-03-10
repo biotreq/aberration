@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgg82qkdbrlw0"]
+[gd_scene load_steps=6 format=3 uid="uid://dgg82qkdbrlw0"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_1uwoe"]
 [ext_resource type="PackedScene" uid="uid://bspymw42wuai0" path="res://Enemy/Enemy1/Enemy1.tscn" id="4_vrj14"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_7rn6f"]
+vertices = PackedVector3Array(-14.5, 0, 7.25, -14.5, 0, 14.5, -7.25, 0, 14.5, 7.25, 0, 14.5, 14.5, 0, 14.5, 14.5, 0, 7.25, 14.5, 0, -7.25, 14.5, 0, -14.5, 7.25, 0, -14.5, -7.25, 0, -14.5, -14.5, 0, -14.5, -14.5, 0, -7.25, -14.5, 0, 0, -14.5, 0, 7.25, -7.25, 0, 14.5, 0, 0, 14.5, 7.25, 0, 14.5, 14.5, 0, 7.25, 14.5, 0, 0, 14.5, 0, -7.25, 7.25, 0, -14.5, 0, 0, -14.5, 0, 0, -14.5, -7.25, 0, -14.5, -14.5, 0, -7.25, -14.5, 0, 0, 14.5, 0, 0, 0, 0, -14.5, -14.5, 0, 0, -7.25, 0, 14.5, 0, 0, 14.5, 14.5, 0, 7.25)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(8, 7, 6), PackedInt32Array(11, 10, 9), PackedInt32Array(14, 13, 12), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 21), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 25), PackedInt32Array(31, 30, 26), PackedInt32Array(26, 30, 29), PackedInt32Array(26, 29, 28), PackedInt32Array(26, 28, 27)]
+geometry_parsed_geometry_type = 1
+agent_height = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7m5a2"]
 size = Vector3(30, 1, 30)
@@ -14,12 +20,17 @@ size = Vector3(30, 1, 30)
 [node name="Player" parent="." instance=ExtResource("1_1uwoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26357, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+navigation_mesh = SubResource("NavigationMesh_7rn6f")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 shape = SubResource("BoxShape3D_7m5a2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 mesh = SubResource("BoxMesh_vxrvx")
 
 [node name="Enemy1" parent="." instance=ExtResource("4_vrj14")]
