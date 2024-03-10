@@ -6848,7 +6848,7 @@ script = ExtResource("1_n5382")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="GuyArmature" type="Node3D" parent="badguy1"]
-transform = Transform3D(0.304533, 0, 0, 0, 0.304533, 0, 0, 0, 0.304533, 0, 0, 0)
+transform = Transform3D(0.33, 0, 0, 0, 0.33, 0, 0, 0, 0.33, 0, 0, 0)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="badguy1/GuyArmature"]
 bones/0/name = "ground"
@@ -7075,7 +7075,7 @@ skin = SubResource("Skin_mau5w")
 surface_material_override/0 = SubResource("ShaderMaterial_yo5wb")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="badguy1/GuyArmature/Skeleton3D"]
-transform = Transform3D(2.07165, 1.7335, -1.85787, -2.40413, 0.561068, -2.15726, -0.822702, 2.72555, 1.62572, -2.22255, 4.14418, 0.653504)
+transform = Transform3D(1.91464, 1.60211, -1.71706, -2.22192, 0.518544, -1.99376, -0.760348, 2.51898, 1.50251, -2.22255, 4.14418, 0.653504)
 bone_name = "weapon"
 bone_idx = 15
 

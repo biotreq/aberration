@@ -39,12 +39,12 @@ color_ramp = SubResource("GradientTexture1D_jycgw")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygs7t"]
 blend_mode = 1
 shading_mode = 0
-albedo_color = Color(0.929412, 0.737255, 0, 1)
+albedo_color = Color(0.745098, 0.588235, 0, 1)
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_8rriw"]
 material = SubResource("StandardMaterial3D_ygs7t")
-size = Vector2(0.008, 0.008)
+size = Vector2(0.005, 0.005)
 
 [node name="ParryEffect" type="GPUParticles3D"]
 emitting = false

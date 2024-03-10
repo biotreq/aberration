@@ -10,8 +10,8 @@ enum State {
 
 const speed = 0.7
 const turn_rate = 0.05
-const max_range = 1.5
-const optimum_range = 1.2
+const max_range = 1.7
+const optimum_range = 1.4
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent := $NavigationAgent3D as NavigationAgent3D

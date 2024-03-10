@@ -44,7 +44,7 @@ billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_d8aw2"]
 material = SubResource("StandardMaterial3D_qdxfc")
-size = Vector2(0.008, 0.008)
+size = Vector2(0.005, 0.005)
 
 [node name="BlockEffect" type="GPUParticles3D"]
 emitting = false
