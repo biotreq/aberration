@@ -1,10 +1,11 @@
-[gd_scene load_steps=98 format=3 uid="uid://bspymw42wuai0"]
+[gd_scene load_steps=99 format=3 uid="uid://bspymw42wuai0"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy1/EnemyNavigation.gd" id="1_n5382"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_bgfsk"]
 [ext_resource type="Texture2D" uid="uid://b8vwi3mrkg1og" path="res://Enemy/Enemy1/ribs.png" id="3_b6hm1"]
 [ext_resource type="PackedScene" uid="uid://2vmdjd7k38v6" path="res://Enemy/Weapon/Sword.tscn" id="3_s23vc"]
 [ext_resource type="Script" path="res://Enemy/Enemy1/AnimationIntelligence.gd" id="5_hrrs6"]
+[ext_resource type="Script" path="res://Common/Hitbox.gd" id="6_s7t0i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awxi0"]
 vertex_color_use_as_albedo = true
@@ -6831,7 +6832,7 @@ states/Think/position = Vector2(820, 272)
 states/WalkForward/node = SubResource("AnimationNodeAnimation_7w4je")
 states/WalkForward/position = Vector2(1025, 249)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5umew"), "Idle", "Activate", SubResource("AnimationNodeStateMachineTransition_i7p5l"), "Activate", "Think", SubResource("AnimationNodeStateMachineTransition_jcrjp"), "Combo1", "Combo1_2a", SubResource("AnimationNodeStateMachineTransition_urgoy"), "Combo1_2a", "Combo1_3", SubResource("AnimationNodeStateMachineTransition_kwnj4"), "Combo1_3", "Combo1_4a", SubResource("AnimationNodeStateMachineTransition_mv5i3"), "Combo1_4a", "Combo1_5", SubResource("AnimationNodeStateMachineTransition_d1wwm"), "Combo1_5", "Think", SubResource("AnimationNodeStateMachineTransition_4iqmu"), "Combo2", "Combo2_2a", SubResource("AnimationNodeStateMachineTransition_6ly43"), "Combo2_2a", "Combo2_3", SubResource("AnimationNodeStateMachineTransition_6dfjk"), "Combo2_3", "Combo2_4a", SubResource("AnimationNodeStateMachineTransition_7e640"), "Combo2_4a", "Combo2_5", SubResource("AnimationNodeStateMachineTransition_iy4xg"), "Combo2_5", "Think", SubResource("AnimationNodeStateMachineTransition_k66x3"), "Block", "Block_2a", SubResource("AnimationNodeStateMachineTransition_blmpl"), "Block_2a", "Block_3", SubResource("AnimationNodeStateMachineTransition_lrus8"), "Block_3", "Think", SubResource("AnimationNodeStateMachineTransition_4mgqd"), "Counter", "Counter_2a", SubResource("AnimationNodeStateMachineTransition_i8wxk"), "Counter_2a", "Counter_3", SubResource("AnimationNodeStateMachineTransition_b8p2i"), "Counter_3", "Think", SubResource("AnimationNodeStateMachineTransition_stvrt"), "Block_2a", "Counter", SubResource("AnimationNodeStateMachineTransition_yhqc5"), "Die", "Dead", SubResource("AnimationNodeStateMachineTransition_i01hs"), "Dead", "End", SubResource("AnimationNodeStateMachineTransition_3xxi5"), "Hurt", "Think", SubResource("AnimationNodeStateMachineTransition_nychw"), "HitStun", "Think", SubResource("AnimationNodeStateMachineTransition_cvyio"), "ParryStun", "Think", SubResource("AnimationNodeStateMachineTransition_ev03e"), "FightIdle", "Think", SubResource("AnimationNodeStateMachineTransition_rhagx"), "FightIdleLong", "Think", SubResource("AnimationNodeStateMachineTransition_kvk42"), "WalkForward", "Think", SubResource("AnimationNodeStateMachineTransition_0k1fl")]
-graph_offset = Vector2(-1200, 142)
+graph_offset = Vector2(-649, 267)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vxjm4"]
 
@@ -7078,14 +7079,15 @@ transform = Transform3D(2.07165, 1.7335, -1.85787, -2.40413, 0.561068, -2.15726,
 bone_name = "weapon"
 bone_idx = 15
 
-[node name="Weapon" parent="badguy1/GuyArmature/Skeleton3D/BoneAttachment3D" instance=ExtResource("3_s23vc")]
+[node name="Weapon" parent="badguy1/GuyArmature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("holder") instance=ExtResource("3_s23vc")]
 unique_name_in_owner = true
+holder = NodePath("../../../../..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="badguy1"]
 libraries = {
 "": SubResource("AnimationLibrary_ajd5t")
 }
-blend_times = [&"Idle", &"Activate", 0.5, &"WalkForward", &"Combo2", 0.5, &"WalkForward", &"Combo1", 0.5]
+blend_times = [&"WalkForward", &"Combo2", 0.5, &"WalkForward", &"Combo1", 0.5, &"Idle", &"Activate", 0.5]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w7qtv")
@@ -7096,9 +7098,11 @@ script = ExtResource("5_hrrs6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_vxjm4")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("state_animator")]
 collision_layer = 4
 collision_mask = 64
+script = ExtResource("6_s7t0i")
+state_animator = NodePath("../AnimationTree")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

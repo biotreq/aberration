@@ -1,4 +1,4 @@
-extends AnimationTree
+extends StateAnimator
 class_name PlayerAnimator
 
 
@@ -28,6 +28,8 @@ func request_attack():
 			is_attack_queued = true
 		elif current_state == &'Attack1_4':
 			playback.travel(&'Attack2')
+		elif current_state == &'Deflect':
+			playback.travel(&'Attack1_2')
 		else:
 			playback.travel(&'Attack1')
 
@@ -60,3 +62,14 @@ const reblock_states := {
 	&'Attack1': null,
 	&'Attack2': null,
 }
+
+func get_block_state() -> BlockState:
+	if current_state == &'Block_a':
+		return BlockState.PerfectBlocking
+	if current_state == &'Block_b' or current_state == &'Block':
+		return BlockState.Blocking
+	return BlockState.None
+
+
+func commit_block():
+	playback.travel(&'Deflect')

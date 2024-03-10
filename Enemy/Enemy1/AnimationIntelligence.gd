@@ -1,4 +1,4 @@
-extends AnimationTree
+extends StateAnimator
 class_name AnimationIntelligence
 
 
@@ -55,3 +55,8 @@ func roll_attack_state():
 		playback.travel(&'FightIdle')
 	else:
 		playback.travel(attack_states.pick_random())
+
+func get_block_state() -> BlockState:
+	if current_state == &'Block_2a':
+		return BlockState.Blocking
+	return BlockState.None

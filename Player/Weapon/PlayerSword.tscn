@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://c8hxkhpujcfv2"]
 
-[ext_resource type="Script" path="res://Enemy/Weapon/Weapon.gd" id="1_fbpiq"]
+[ext_resource type="Script" path="res://Common/Weapon.gd" id="1_mo5f5"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_sh03n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6snj"]
@@ -49,7 +49,7 @@ transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
 collision_layer = 64
 collision_mask = 4
 monitoring = false
-script = ExtResource("1_fbpiq")
+script = ExtResource("1_mo5f5")
 
 [node name="sword" type="Node3D" parent="."]
 transform = Transform3D(-1.31134e-08, -0.3, -1.31134e-08, 0, -1.31134e-08, 0.3, -0.3, 1.31134e-08, 5.73206e-16, 0, 0, 0)
