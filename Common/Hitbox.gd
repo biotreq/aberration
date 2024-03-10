@@ -9,6 +9,7 @@ enum AttackEffect {
 
 @export var state_animator: StateAnimator
 @onready var parent := $'..' as Node3D
+@onready var weapon := $'%Weapon' as Weapon
 const block_threshold := 0.9
 
 func attack(damage: float, attacker: Node3D) -> AttackEffect:
@@ -16,6 +17,8 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	if block_state != StateAnimator.BlockState.None:
 		state_animator.commit_block()
 		if get_dot_to(attacker) >= block_threshold:
+			if block_state == StateAnimator.BlockState.PerfectBlocking:
+				weapon.spark()
 			return (
 				AttackEffect.Parried
 				if block_state == StateAnimator.BlockState.Blocking

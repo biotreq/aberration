@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2i3jt627r06v"]
+
+[sub_resource type="Curve" id="Curve_u10vx"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -360), -1417.26, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rydtd"]
+curve = SubResource("Curve_u10vx")
+
+[sub_resource type="Gradient" id="Gradient_434vj"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jycgw"]
+gradient = SubResource("Gradient_434vj")
+
+[sub_resource type="Curve" id="Curve_t3kyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.31437, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dacla"]
+curve = SubResource("Curve_t3kyg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dye83"]
+lifetime_randomness = 0.1
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+angular_velocity_curve = SubResource("CurveTexture_rydtd")
+angle_min = 326.2
+angle_max = 326.2
+scale_curve = SubResource("CurveTexture_dacla")
+color_ramp = SubResource("GradientTexture1D_jycgw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygs7t"]
+blend_mode = 1
+shading_mode = 0
+albedo_color = Color(0.929412, 0.737255, 0, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_8rriw"]
+material = SubResource("StandardMaterial3D_ygs7t")
+size = Vector2(0.008, 0.008)
+
+[node name="ParryEffect" type="GPUParticles3D"]
+emitting = false
+amount = 42
+lifetime = 0.32
+one_shot = true
+explosiveness = 1.0
+randomness = 0.25
+trail_lifetime = 0.23
+process_material = SubResource("ParticleProcessMaterial_dye83")
+draw_pass_1 = SubResource("QuadMesh_8rriw")

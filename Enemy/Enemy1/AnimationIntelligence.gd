@@ -6,6 +6,7 @@ class_name AnimationIntelligence
 @onready var navigation := $'..' as EnemyNavigation
 @onready var weapon := $'%Weapon' as Weapon
 @onready var hitbox := $'../Hitbox' as Hitbox
+const parry_tendency := 0.25
 
 func _ready():
 	current_state = playback.get_current_node()
@@ -28,7 +29,10 @@ func _process(_delta):
 	if new_state != current_state:
 		if new_state == &'Think':
 			if navigation.can_reach_player():
-				roll_attack_state()
+				if current_state in hurt_states and randf() <= parry_tendency:
+					playback.start(&'Block')
+				else:
+					roll_attack_state()
 			else:
 				playback.travel(&'WalkForward')
 				navigation.chase_player()
@@ -83,7 +87,7 @@ func receive_attack():
 		playback.start(&'HitStun')
 		return
 	if (
-		current_state in hyper_armor_states
+		current_state in hurt_states
 		or current_state in active_attack_states
 	):
 		return
@@ -92,13 +96,17 @@ func receive_attack():
 		last_staggered_at = Time.get_ticks_msec()
 
 
+func commit_block():
+	playback.start(&'Counter')
+
+
 var last_staggered_at := 0
 
 func is_in_hurt_grace_period():
 	return Time.get_ticks_msec() <= last_staggered_at + 1500
 
 
-const hyper_armor_states := {
+const hurt_states := {
 	&'Hurt': null,
 	&'HitStun': null,
 	&'ParryStun': null,

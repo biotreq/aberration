@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8hxkhpujcfv2"]
+[gd_scene load_steps=9 format=3 uid="uid://c8hxkhpujcfv2"]
 
 [ext_resource type="Script" path="res://Common/Weapon.gd" id="1_mo5f5"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_sh03n"]
+[ext_resource type="PackedScene" uid="uid://b2i3jt627r06v" path="res://Common/ClashEffects/ParryEffect.tscn" id="2_syifk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6snj"]
 vertex_color_use_as_albedo = true
@@ -50,6 +51,8 @@ collision_layer = 64
 collision_mask = 4
 monitoring = false
 script = ExtResource("1_mo5f5")
+
+[node name="BlockEffect" parent="." instance=ExtResource("2_syifk")]
 
 [node name="sword" type="Node3D" parent="."]
 transform = Transform3D(-1.31134e-08, -0.3, -1.31134e-08, 0, -1.31134e-08, 0.3, -0.3, 1.31134e-08, 5.73206e-16, 0, 0, 0)
