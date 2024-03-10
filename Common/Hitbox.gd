@@ -12,6 +12,8 @@ enum AttackEffect {
 @onready var weapon := $'%Weapon' as Weapon
 const block_threshold := 0.9
 @onready var blood_splatter := $Blood as GPUParticles3D
+@onready var stats := $'../Stats' as Stats
+
 
 func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	var block_state = state_animator.get_block_state()
@@ -24,7 +26,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 			if block_state == StateAnimator.BlockState.Blocking:
 				weapon.spark()
 				return AttackEffect.Parried
-	print('hurt for ', damage)
+	stats.lose_health(damage)
 	notify_hurt.emit()
 	blood_splatter.emitting = true
 	return AttackEffect.Hurt

@@ -6,6 +6,7 @@ class_name AnimationIntelligence
 @onready var navigation := $'..' as EnemyNavigation
 @onready var weapon := $'%Weapon' as Weapon
 @onready var hitbox := $'../Hitbox' as Hitbox
+@onready var stats := $'../Stats' as Stats
 const parry_tendency := 0.25
 
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	navigation.reached_player.connect(start_fighting)
 	weapon.notify_attack_effect.connect(complete_attack)
 	hitbox.notify_hurt.connect(receive_attack)
+	stats.died.connect(die)
 
 
 var current_state: StringName
@@ -40,6 +42,8 @@ func _process(_delta):
 			weapon.activate()
 		if current_state in active_attack_states:
 			weapon.deactivate()
+		if new_state == &'Dead':
+			navigation.queue_free()
 		current_state = new_state
 
 
@@ -58,7 +62,7 @@ func start_fighting():
 var attack_states := [&'Combo1', &'Combo2']
 
 func roll_attack_state():
-	if randf() > 0.8:
+	if randf() > 0.9:
 		playback.travel(&'FightIdle')
 	else:
 		playback.travel(attack_states.pick_random())
@@ -118,3 +122,9 @@ var poise := max_poise
 const attack_poise_loss := 2
 const parry_poise_loss := 3
 const block_poise_loss := 1
+
+
+func die():
+	playback.start(&'Die')
+	hitbox.notify_hurt.disconnect(receive_attack)
+	stats.died.disconnect(die)
