@@ -11,6 +11,7 @@ enum AttackEffect {
 @onready var parent := $'..' as Node3D
 @onready var weapon := $'%Weapon' as Weapon
 const block_threshold := 0.9
+@onready var blood_splatter := $Blood as GPUParticles3D
 
 func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	var block_state = state_animator.get_block_state()
@@ -26,6 +27,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 			)
 	print('hurt for ', damage)
 	notify_hurt.emit()
+	blood_splatter.emitting = true
 	return AttackEffect.Hurt
 
 func get_dot_to(target: Node3D) -> float:

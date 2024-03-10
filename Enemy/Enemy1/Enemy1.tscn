@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://bspymw42wuai0"]
+[gd_scene load_steps=100 format=3 uid="uid://bspymw42wuai0"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy1/EnemyNavigation.gd" id="1_n5382"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_bgfsk"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://2vmdjd7k38v6" path="res://Enemy/Weapon/Sword.tscn" id="3_s23vc"]
 [ext_resource type="Script" path="res://Enemy/Enemy1/AnimationIntelligence.gd" id="5_hrrs6"]
 [ext_resource type="Script" path="res://Common/Hitbox.gd" id="6_s7t0i"]
+[ext_resource type="PackedScene" uid="uid://b2k6o8ydgy3aw" path="res://Common/ClashEffects/Blood.tscn" id="7_6quhs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awxi0"]
 vertex_color_use_as_albedo = true
@@ -7075,7 +7076,7 @@ skin = SubResource("Skin_mau5w")
 surface_material_override/0 = SubResource("ShaderMaterial_yo5wb")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="badguy1/GuyArmature/Skeleton3D"]
-transform = Transform3D(1.91464, 1.60211, -1.71706, -2.22192, 0.518544, -1.99376, -0.760348, 2.51898, 1.50251, -2.22255, 4.14418, 0.653504)
+transform = Transform3D(2.07165, 1.7335, -1.85787, -2.40413, 0.561068, -2.15726, -0.822702, 2.72555, 1.62572, -2.22255, 4.14418, 0.653504)
 bone_name = "weapon"
 bone_idx = 15
 
@@ -7103,6 +7104,9 @@ collision_layer = 4
 collision_mask = 64
 script = ExtResource("6_s7t0i")
 state_animator = NodePath("../AnimationTree")
+
+[node name="Blood" parent="Hitbox" instance=ExtResource("7_6quhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52984, -0.152583)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

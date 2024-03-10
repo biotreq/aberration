@@ -18,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var ai := $AnimationTree as AnimationIntelligence
 @onready var player: = get_tree().current_scene.get_node('Player') as CharacterBody3D
 
+
 func _ready():
 	navigation_agent.path_desired_distance = optimum_range
 	# var start_stagger := create_tween()

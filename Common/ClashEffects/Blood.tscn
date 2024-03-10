@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2k6o8ydgy3aw"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_imv8a"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+direction = Vector3(0, -0.1, 0)
+spread = 30.99
+initial_velocity_max = 6.03
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7187e"]
+blend_mode = 3
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_brln8"]
+material = SubResource("StandardMaterial3D_7187e")
+size = Vector2(0.02, 0.02)
+
+[node name="Blood" type="GPUParticles3D"]
+emitting = false
+amount = 32
+lifetime = 0.2
+one_shot = true
+explosiveness = 0.8
+randomness = 0.13
+process_material = SubResource("ParticleProcessMaterial_imv8a")
+draw_pass_1 = SubResource("QuadMesh_brln8")
