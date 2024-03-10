@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://2vmdjd7k38v6"]
+[gd_scene load_steps=10 format=3 uid="uid://2vmdjd7k38v6"]
 
 [ext_resource type="Script" path="res://Common/Weapon.gd" id="1_fm00a"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="1_w7w3q"]
 [ext_resource type="PackedScene" uid="uid://u3jwick8y2h2" path="res://Common/ClashEffects/BlockEffect.tscn" id="2_86iyr"]
+[ext_resource type="PackedScene" uid="uid://b2i3jt627r06v" path="res://Common/ClashEffects/ParryEffect.tscn" id="3_5ip7m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6snj"]
 vertex_color_use_as_albedo = true
@@ -54,6 +55,9 @@ script = ExtResource("1_fm00a")
 [node name="BlockEffect" parent="." instance=ExtResource("2_86iyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168816, 0)
 
+[node name="ParryEffect" parent="." instance=ExtResource("3_5ip7m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.203337, 0)
+
 [node name="sword" type="Node3D" parent="."]
 transform = Transform3D(-1.31134e-08, -0.3, -1.31134e-08, 0, -1.31134e-08, 0.3, -0.3, 1.31134e-08, 5.73206e-16, 0, 0, 0)
 
@@ -67,3 +71,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_35n5b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409097, 0)
 shape = SubResource("CapsuleShape3D_e0mma")
 metadata/_edit_group_ = true
+
+[node name="Flare" type="Node3D" parent="."]

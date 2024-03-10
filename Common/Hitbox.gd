@@ -19,12 +19,11 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 		state_animator.commit_block()
 		if get_dot_to(attacker) >= block_threshold:
 			if block_state == StateAnimator.BlockState.PerfectBlocking:
+				weapon.big_spark()
+				return AttackEffect.PerfectParried
+			if block_state == StateAnimator.BlockState.Blocking:
 				weapon.spark()
-			return (
-				AttackEffect.Parried
-				if block_state == StateAnimator.BlockState.Blocking
-				else AttackEffect.PerfectParried
-			)
+				return AttackEffect.Parried
 	print('hurt for ', damage)
 	notify_hurt.emit()
 	blood_splatter.emitting = true
