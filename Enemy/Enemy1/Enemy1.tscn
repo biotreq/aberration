@@ -7085,7 +7085,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_ajd5t")
 }
-blend_times = [&"WalkForward", &"Combo1", 0.5, &"WalkForward", &"Combo2", 0.5, &"Idle", &"Activate", 0.5]
+blend_times = [&"Idle", &"Activate", 0.5, &"WalkForward", &"Combo2", 0.5, &"WalkForward", &"Combo1", 0.5]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w7qtv")

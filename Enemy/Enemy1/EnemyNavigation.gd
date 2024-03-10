@@ -35,6 +35,7 @@ func _physics_process(delta):
 
 	if state == State.Idle:
 		look_for_player()
+
 	if state == State.Traversing:
 		if navigation_agent.is_navigation_finished():
 			state = State.Fighting
@@ -47,6 +48,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * 0.1)
 		velocity.z = move_toward(velocity.z, 0, speed * 0.1)
+
 	if state == State.Fighting:
 		turn_to_target(player.global_position)
 
@@ -67,7 +69,7 @@ func chase_player():
 	state = State.Traversing
 	target_player_position()
 	navigation_tween = create_tween()
-	navigation_tween.tween_interval(1.0)
+	navigation_tween.tween_interval(0.5)
 	navigation_tween.tween_callback(target_player_position)
 	navigation_tween.set_loops()
 
