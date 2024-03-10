@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3rinw8ul20l6"]
+
+[ext_resource type="PackedScene" uid="uid://c4ogug0nyytb3" path="res://Common/ClashEffects/flare.glb" id="1_v8h0c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q651n"]
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[node name="Flare" instance=ExtResource("1_v8h0c")]
+
+[node name="Circle" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q651n")

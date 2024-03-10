@@ -5,6 +5,7 @@ class_name Weapon
 @export var damage := 10.0
 @export var holder: Node3D
 @onready var block_effect := $BlockEffect as GPUParticles3D
+@onready var flare := $Flare as Node3D
 
 func _ready():
 	area_entered.connect(attack)
@@ -30,5 +31,9 @@ func deactivate():
 
 func spark():
 	block_effect.emitting = true
+	if flare:
+		flare.scale = Vector3.ONE * 0.3
+		var tween := create_tween()
+		tween.tween_property(flare, 'scale', Vector3.ZERO, 0.1)
 
 signal notify_attack_effect(effect: Hitbox.AttackEffect)

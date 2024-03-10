@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8hxkhpujcfv2"]
+[gd_scene load_steps=10 format=3 uid="uid://c8hxkhpujcfv2"]
 
 [ext_resource type="Script" path="res://Common/Weapon.gd" id="1_mo5f5"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_sh03n"]
 [ext_resource type="PackedScene" uid="uid://b2i3jt627r06v" path="res://Common/ClashEffects/ParryEffect.tscn" id="2_syifk"]
+[ext_resource type="PackedScene" uid="uid://c3rinw8ul20l6" path="res://Common/ClashEffects/Flare.tscn" id="4_8by51"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6snj"]
 vertex_color_use_as_albedo = true
@@ -46,16 +47,17 @@ radius = 0.0609675
 height = 0.679284
 
 [node name="Sword" type="Area3D"]
-transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 64
 collision_mask = 4
 monitoring = false
 script = ExtResource("1_mo5f5")
 
 [node name="BlockEffect" parent="." instance=ExtResource("2_syifk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.289004, 0)
 
 [node name="sword" type="Node3D" parent="."]
-transform = Transform3D(-1.31134e-08, -0.3, -1.31134e-08, 0, -1.31134e-08, 0.3, -0.3, 1.31134e-08, 5.73206e-16, 0, 0, 0)
+transform = Transform3D(0.259808, -0.15, -6.55671e-09, 0, -1.31134e-08, 0.3, -0.15, -0.259808, -1.13566e-08, 0, 0, 0)
 
 [node name="Sword" type="MeshInstance3D" parent="sword"]
 transform = Transform3D(0.965926, 0.258819, 1.13133e-08, -0.258819, 0.965926, -1.48943e-09, -1.13133e-08, -1.48943e-09, 1, 0, 0, 0)
@@ -67,3 +69,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_35n5b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409097, 0)
 shape = SubResource("CapsuleShape3D_e0mma")
 metadata/_edit_group_ = true
+
+[node name="Flare" parent="." instance=ExtResource("4_8by51")]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.253, 0)
