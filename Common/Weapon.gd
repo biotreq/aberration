@@ -22,6 +22,6 @@ func activate():
 
 
 func deactivate():
-	monitoring = false
+	set_deferred('monitoring', false)
 
 signal notify_attack_effect(effect: Hitbox.AttackEffect)

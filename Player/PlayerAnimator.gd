@@ -14,6 +14,8 @@ var current_state: StringName
 func _process(_delta):
 	var new_state := playback.get_current_node()
 	if new_state != current_state:
+		if new_state in attack_states:
+			weapon.activate()
 		is_attack_queued = false
 		is_block_queued = false
 		current_state = new_state
@@ -38,10 +40,10 @@ func request_block():
 	if current_state in action_request_states:
 		if current_state == &'Attack1_3a' or current_state == &'Attack2_2a':
 			is_block_queued = true
-		elif current_state in reblock_states:
-			playback.travel(&'ReBlock')
 		else:
 			playback.travel(&'Block')
+	if current_state in reblock_states:
+		playback.start(&'ReBlock')
 
 
 const action_request_states := {
@@ -73,3 +75,9 @@ func get_block_state() -> BlockState:
 
 func commit_block():
 	playback.travel(&'Deflect')
+
+
+const attack_states := {
+	&'Attack1_3a': null,
+	&'Attack2_2a': null,
+}

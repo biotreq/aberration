@@ -22,6 +22,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 				else AttackEffect.PerfectParried
 			)
 	print('hurt for ', damage)
+	notify_hurt.emit()
 	return AttackEffect.Hurt
 
 func get_dot_to(target: Node3D) -> float:
@@ -30,3 +31,6 @@ func get_dot_to(target: Node3D) -> float:
 	var target_position: = target.global_position - global_position
 	target_position.y = 0
 	return forward_position.dot(target_position.normalized())
+
+
+signal notify_hurt()

@@ -5,10 +5,13 @@ class_name AnimationIntelligence
 @onready var playback := self.get("parameters/playback") as AnimationNodeStateMachinePlayback
 @onready var navigation := $'..' as EnemyNavigation
 @onready var weapon := $'%Weapon' as Weapon
+@onready var hitbox := $'../Hitbox' as Hitbox
 
 func _ready():
 	current_state = playback.get_current_node()
 	navigation.reached_player.connect(start_fighting)
+	weapon.notify_attack_effect.connect(complete_attack)
+	hitbox.notify_hurt.connect(receive_attack)
 
 
 var current_state: StringName
@@ -60,3 +63,50 @@ func get_block_state() -> BlockState:
 	if current_state == &'Block_2a':
 		return BlockState.Blocking
 	return BlockState.None
+
+
+func complete_attack(effect: Hitbox.AttackEffect):
+	if effect == Hitbox.AttackEffect.Parried:
+		poise -= block_poise_loss
+		# only poisebreak on perfect parry
+	if effect == Hitbox.AttackEffect.PerfectParried:
+		poise -= parry_poise_loss
+		if poise <= 0:
+			poise = max_poise
+			playback.start(&'ParryStun')
+
+
+func receive_attack():
+	poise -= attack_poise_loss
+	if poise <= 0:
+		poise = max_poise
+		playback.start(&'HitStun')
+		return
+	if (
+		current_state in hyper_armor_states
+		or current_state in active_attack_states
+	):
+		return
+	if !is_in_hurt_grace_period():
+		playback.start(&'Hurt')
+		last_staggered_at = Time.get_ticks_msec()
+
+
+var last_staggered_at := 0
+
+func is_in_hurt_grace_period():
+	return Time.get_ticks_msec() <= last_staggered_at + 1500
+
+
+const hyper_armor_states := {
+	&'Hurt': null,
+	&'HitStun': null,
+	&'ParryStun': null,
+}
+
+
+const max_poise := 15
+var poise := max_poise
+const attack_poise_loss := 2
+const parry_poise_loss := 3
+const block_poise_loss := 1
