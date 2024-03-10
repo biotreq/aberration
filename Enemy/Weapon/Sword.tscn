@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://2vmdjd7k38v6"]
+[gd_scene load_steps=8 format=3 uid="uid://2vmdjd7k38v6"]
 
+[ext_resource type="Script" path="res://Enemy/Weapon/Weapon.gd" id="1_6485i"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="1_w7w3q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6snj"]
@@ -44,6 +45,10 @@ radius = 0.0609675
 height = 0.679284
 
 [node name="Sword" type="Area3D"]
+collision_layer = 32
+collision_mask = 16
+monitoring = false
+script = ExtResource("1_6485i")
 
 [node name="sword" type="Node3D" parent="."]
 transform = Transform3D(-1.31134e-08, -0.3, -1.31134e-08, 0, -1.31134e-08, 0.3, -0.3, 1.31134e-08, 5.73206e-16, 0, 0, 0)

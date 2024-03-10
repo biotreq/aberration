@@ -8,8 +8,10 @@ enum State {
 	Fighting,
 }
 
-const speed = 0.8
+const speed = 0.7
 const turn_rate = 0.05
+const max_range = 1.5
+const optimum_range = 1.2
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent := $NavigationAgent3D as NavigationAgent3D
@@ -17,6 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player: = get_tree().current_scene.get_node('Player') as CharacterBody3D
 
 func _ready():
+	navigation_agent.path_desired_distance = optimum_range
 	# var start_stagger := create_tween()
 	# start_stagger.tween_interval(randf() * 2.0)
 	# start_stagger.tween_callback(ai.start)
@@ -44,6 +47,8 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed * 0.1)
 		velocity.z = move_toward(velocity.z, 0, speed * 0.1)
+	if state == State.Fighting:
+		turn_to_target(player.global_position)
 
 	move_and_slide()
 
@@ -54,7 +59,6 @@ func wake_up():
 
 func look_for_player():
 	wake_up()
-	# chase_player()
 
 
 func chase_player():
@@ -78,7 +82,7 @@ func target_player_position():
 
 
 func can_reach_player() -> bool:
-	return global_position.distance_to(player.global_position) < 1.5
+	return global_position.distance_to(player.global_position) < max_range
 
 
 signal reached_player()

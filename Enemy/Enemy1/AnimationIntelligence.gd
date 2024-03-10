@@ -4,6 +4,7 @@ class_name AnimationIntelligence
 
 @onready var playback := self.get("parameters/playback") as AnimationNodeStateMachinePlayback
 @onready var navigation := $'..' as EnemyNavigation
+@onready var weapon := $'%Weapon' as Weapon
 
 func _ready():
 	current_state = playback.get_current_node()
@@ -11,17 +12,28 @@ func _ready():
 
 
 var current_state: StringName
+var active_attack_states := {
+	&'Combo1_2a': null,
+	&'Combo1_4a': null,
+	&'Combo2_2a': null,
+	&'Combo2_4a': null,
+	&'Counter_2a': null,
+}
 
 func _process(_delta):
-	var state := playback.get_current_node()
-	if state != current_state:
-		if state == &'Think':
+	var new_state := playback.get_current_node()
+	if new_state != current_state:
+		if new_state == &'Think':
 			if navigation.can_reach_player():
 				roll_attack_state()
 			else:
 				playback.travel(&'WalkForward')
 				navigation.chase_player()
-		current_state = state
+		if new_state in active_attack_states:
+			weapon.activate()
+		if current_state in active_attack_states:
+			weapon.deactivate()
+		current_state = new_state
 
 
 func start():
