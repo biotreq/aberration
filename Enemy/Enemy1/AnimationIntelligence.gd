@@ -100,7 +100,7 @@ func receive_attack(_damage: float):
 		last_staggered_at = Time.get_ticks_msec()
 
 
-func commit_block():
+func commit_block(_state):
 	playback.start(&'Counter')
 
 

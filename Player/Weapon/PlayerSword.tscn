@@ -44,8 +44,8 @@ render_priority = 0
 shader = ExtResource("2_sh03n")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e0mma"]
-radius = 0.0609675
-height = 0.679284
+radius = 0.0770307
+height = 0.691725
 
 [node name="Sword" type="Area3D"]
 collision_layer = 64
@@ -69,7 +69,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_35n5b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.409097, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.440185, 0)
 shape = SubResource("CapsuleShape3D_e0mma")
 metadata/_edit_group_ = true
 

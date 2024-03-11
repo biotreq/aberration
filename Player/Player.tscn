@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://go1ehors68tj"]
+[gd_scene load_steps=82 format=3 uid="uid://go1ehors68tj"]
 
 [ext_resource type="Script" path="res://Player/Control.gd" id="1_j5cev"]
 [ext_resource type="Script" path="res://Common/Hitbox.gd" id="2_cgiu2"]
@@ -4630,6 +4630,55 @@ shader_parameter/green_blue = 1.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_7ciig"]
 viewport_path = NodePath("Viewport/Camera3D/SubViewport2")
 
+[sub_resource type="Gradient" id="Gradient_v0nr6"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.585847, 8.66354e-07, 3.36915e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocxge"]
+gradient = SubResource("Gradient_v0nr6")
+width = 512
+height = 24
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_be1fp"]
+colors = PackedColorArray(0, 0, 0, 0.909804, 0, 0, 0, 0.909804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tpx4y"]
+gradient = SubResource("Gradient_be1fp")
+width = 512
+height = 24
+
+[sub_resource type="Gradient" id="Gradient_01e1j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.36945, 0.00103207, 0.550381, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pnjw0"]
+gradient = SubResource("Gradient_01e1j")
+width = 512
+height = 24
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Gradient" id="Gradient_u2mu6"]
+colors = PackedColorArray(0, 0.447059, 0.156863, 1, 0, 0.447059, 0.156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hnj8s"]
+gradient = SubResource("Gradient_u2mu6")
+width = 512
+height = 24
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_keeqq"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.970598, 0.597367, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sbx2u"]
+gradient = SubResource("Gradient_keeqq")
+width = 512
+height = 24
+fill_to = Vector2(0, 1)
+
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 3
@@ -4654,23 +4703,20 @@ shape = SubResource("CapsuleShape3D_28ykw")
 [node name="Camera3D" type="Camera3D" parent="Viewport"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6534, 0)
-keep_aspect = 0
-fov = 110.0
+fov = 90.0
 
 [node name="SubViewport" type="SubViewport" parent="Viewport/Camera3D"]
-size = Vector2i(160, 160)
+size = Vector2i(210, 100)
 
 [node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport"]
-keep_aspect = 0
-fov = 110.0
+fov = 90.0
 script = ExtResource("4_64fmy")
 
 [node name="SubViewport2" type="SubViewport" parent="Viewport/Camera3D"]
-size = Vector2i(320, 320)
+size = Vector2i(420, 180)
 
 [node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport2"]
-keep_aspect = 0
-fov = 110.0
+fov = 90.0
 script = ExtResource("4_64fmy")
 
 [node name="Arms" type="Node3D" parent="Viewport"]
@@ -4699,21 +4745,21 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.912373, 0.409214, 0.0109051, -0.409359, 0.912056, 0.0240722, -9.5407e-05, -0.026427, 0.999651, 1.28831e-08, 0.457951, -1.78232e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(1.28831e-08, 0.457951, -1.78232e-08)
-bones/2/rotation = Quaternion(-0.0504511, -0.349942, -0.460784, 0.814048)
+bones/2/rotation = Quaternion(-0.0728991, -0.333774, -0.469855, 0.813952)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "forearm.r"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999191, 0.0311243, 0.025463, -0.0401479, 0.808138, 0.587624, -0.00228827, -0.588171, 0.808734, -3.72365e-08, 1.112, -1.11759e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.72365e-08, 1.112, -1.11759e-08)
-bones/3/rotation = Quaternion(-0.420984, 0.0069583, -0.0255184, 0.906682)
+bones/3/rotation = Quaternion(-0.370299, 0.00712662, -0.0224461, 0.928614)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "hand.r"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-0.661167, 0.591641, 0.461324, -0.745907, -0.584373, -0.31958, 0.0805086, -0.5554, 0.827677, 2.15828, -1.5517, -0.277492)
 bones/4/enabled = true
-bones/4/position = Vector3(0.989042, -2.356, 0.2286)
-bones/4/rotation = Quaternion(0.00284843, -0.0690019, 0.989474, -0.12717)
+bones/4/position = Vector3(1.00061, -2.39854, 0.206351)
+bones/4/rotation = Quaternion(0.00580885, -0.0894726, 0.987901, -0.126539)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "thumb1.r"
 bones/5/parent = 4
@@ -4967,7 +5013,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.947265, -0.603182, -3.83961, 3.86916, 0.228751, -0.990489, 0.368897, -3.94811, 0.529218, 0.960799, -2.73679, 0.201245)
+transform = Transform3D(-0.940072, -0.646978, -3.83425, 3.85164, 0.386558, -1.00956, 0.533768, -3.92884, 0.532071, 0.971768, -2.77793, 0.164119)
 bone_name = "weapon"
 bone_idx = 19
 
@@ -5010,3 +5056,51 @@ texture_repeat = 3
 material = SubResource("ShaderMaterial_s1wt3")
 scale = Vector2(12, 12)
 texture = SubResource("ViewportTexture_7ciig")
+
+[node name="Stats" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HealthBar" type="TextureProgressBar" parent="HUD/Stats"]
+z_index = 4
+layout_mode = 0
+offset_left = 95.0
+offset_top = -189.0
+offset_right = 607.0
+offset_bottom = -135.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_ocxge")
+
+[node name="HealthRegainBar" type="TextureProgressBar" parent="HUD/Stats"]
+z_index = 3
+layout_mode = 0
+offset_left = 95.0
+offset_top = -189.0
+offset_right = 607.0
+offset_bottom = -135.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_tpx4y")
+texture_progress = SubResource("GradientTexture2D_pnjw0")
+
+[node name="StaminaBar" type="TextureProgressBar" parent="HUD/Stats"]
+z_index = 4
+layout_mode = 0
+offset_left = 95.0
+offset_top = -114.0
+offset_right = 607.0
+offset_bottom = -60.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_hnj8s")
+
+[node name="StaminaRegainBar" type="TextureProgressBar" parent="HUD/Stats"]
+z_index = 3
+layout_mode = 0
+offset_left = 95.0
+offset_top = -114.0
+offset_right = 607.0
+offset_bottom = -60.0
+value = 100.0
+texture_under = SubResource("GradientTexture2D_tpx4y")
+texture_progress = SubResource("GradientTexture2D_sbx2u")

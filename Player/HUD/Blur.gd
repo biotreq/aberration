@@ -23,9 +23,9 @@ func resize():
 	heavy_blur.position = Vector2(screen_size.x / 2, screen_size.y / 2)
 	light_blur.position = Vector2(screen_size.x / 2, screen_size.y / 2)
 
-	var heavy_scale := float(screen_size.x) / float(heavy_blur.texture.get_width())
+	var heavy_scale := float(screen_size.y) / float(heavy_blur.texture.get_height())
 	heavy_blur.scale = Vector2(heavy_scale, heavy_scale)
-	var light_scale := float(screen_size.x) / float(light_blur.texture.get_width())
+	var light_scale := float(screen_size.y) / float(light_blur.texture.get_height())
 	light_blur.scale = Vector2(light_scale, light_scale)
 
 

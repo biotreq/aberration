@@ -13,5 +13,5 @@ func get_block_state() -> BlockState:
 	return BlockState.None
 
 
-func commit_block():
-	assert(false)
+func commit_block(state: BlockState):
+	assert(state == 100)

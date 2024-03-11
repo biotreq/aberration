@@ -4,6 +4,7 @@ class_name PlayerAnimator
 
 @onready var playback := self.get("parameters/playback") as AnimationNodeStateMachinePlayback
 @onready var weapon := $'%Weapon' as Weapon
+@onready var stats := $'../Stats' as PlayerStats
 
 func _ready():
 	current_state = playback.get_current_node()
@@ -16,6 +17,11 @@ func _process(_delta):
 	if new_state != current_state:
 		if new_state in attack_states:
 			weapon.activate()
+			stats.spend_stamina(40)
+		if current_state in attack_states:
+			weapon.deactivate()
+		if new_state in block_up_states:
+			stats.spend_stamina(20)
 		is_attack_queued = false
 		is_block_queued = false
 		current_state = new_state
@@ -25,6 +31,8 @@ var is_attack_queued = false
 var is_block_queued = false
 
 func request_attack():
+	if !stats.can_use_stamina():
+		return
 	if current_state in action_request_states:
 		if current_state == &'Attack1_3a' or current_state == &'Attack2_2a':
 			is_attack_queued = true
@@ -73,11 +81,17 @@ func get_block_state() -> BlockState:
 	return BlockState.None
 
 
-func commit_block():
+func commit_block(state: BlockState):
+	stats.regain_stamina(12 if state == BlockState.Blocking else 30)
 	playback.travel(&'Deflect')
 
 
 const attack_states := {
 	&'Attack1_3a': null,
 	&'Attack2_2a': null,
+}
+
+const block_up_states := {
+	&'Block': null,
+	&'ReBlock': null,
 }

@@ -18,7 +18,7 @@ const block_threshold := 0.9
 func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	var block_state = state_animator.get_block_state()
 	if block_state != StateAnimator.BlockState.None:
-		state_animator.commit_block()
+		state_animator.commit_block(block_state)
 		if get_dot_to(attacker) >= block_threshold:
 			if block_state == StateAnimator.BlockState.PerfectBlocking:
 				weapon.big_spark()
