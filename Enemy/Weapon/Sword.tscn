@@ -51,7 +51,7 @@ collision_layer = 32
 collision_mask = 16
 monitoring = false
 script = ExtResource("1_fm00a")
-damage = 20.0
+damage = 25.0
 random_damage = 10.0
 
 [node name="BlockEffect" parent="." instance=ExtResource("2_86iyr")]

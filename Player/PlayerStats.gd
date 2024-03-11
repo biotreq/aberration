@@ -36,7 +36,7 @@ func lose_health(amount: float):
 
 func spend_stamina(amount: float):
 	assert(amount > 0)
-	stamina = max(stamina - amount, -20.)
+	stamina = max(stamina - amount, -40.)
 	if (
 		!is_ticking_down_stamina_regain
 		and (!stamina_regain_tween or !stamina_regain_tween.is_running())
@@ -68,7 +68,7 @@ func regain_health(amount: float):
 	if health + amount <= health_regain:
 		health += amount
 	elif health >= health_regain:
-		health += amount * 0.3
+		health = min(health + amount * 0.3, max_health)
 		health_regain = health
 	else:
 		amount -= health_regain - health
