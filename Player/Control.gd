@@ -4,7 +4,7 @@ extends CharacterBody3D
 const speed = 2.0
 
 var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
-@onready var camera: = $'Viewport/Camera3D' as Camera3D
+@onready var camera: = $'%Camera3D' as Camera3D
 @onready var arms: = $'Viewport/Arms' as Node3D
 @onready var animator: = $'AnimationTree' as PlayerAnimator
 
