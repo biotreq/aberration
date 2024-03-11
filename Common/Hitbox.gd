@@ -27,7 +27,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 				weapon.spark()
 				return AttackEffect.Parried
 	stats.lose_health(damage)
-	notify_hurt.emit()
+	notify_hurt.emit(damage)
 	blood_splatter.emitting = true
 	return AttackEffect.Hurt
 
@@ -39,4 +39,4 @@ func get_dot_to(target: Node3D) -> float:
 	return forward_position.dot(target_position.normalized())
 
 
-signal notify_hurt()
+signal notify_hurt(damage: float)

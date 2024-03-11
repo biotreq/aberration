@@ -84,7 +84,7 @@ func complete_attack(effect: Hitbox.AttackEffect):
 			playback.start(&'ParryStun')
 
 
-func receive_attack():
+func receive_attack(_damage: float):
 	poise -= attack_poise_loss
 	if poise <= 0:
 		poise = max_poise

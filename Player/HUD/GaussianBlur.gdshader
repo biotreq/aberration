@@ -2,6 +2,7 @@ shader_type canvas_item;
 
 uniform float inner_radius;
 uniform float outer_radius;
+uniform float green_blue = 1.0;
 
 void fragment() {
 	const float fourth = 1.0 / 4.0;
@@ -22,6 +23,6 @@ void fragment() {
 
 	float alpha = (length(UV - vec2(0.5, 0.5)) - inner_radius) * outer_radius;
 
-	COLOR.rgb = col;
+	COLOR.rgb = col * vec3(1.0, green_blue, green_blue);
 	COLOR.a = alpha;
 }

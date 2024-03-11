@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://go1ehors68tj"]
+[gd_scene load_steps=72 format=3 uid="uid://go1ehors68tj"]
 
 [ext_resource type="Script" path="res://Player/Control.gd" id="1_j5cev"]
 [ext_resource type="Script" path="res://Common/Hitbox.gd" id="2_cgiu2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Player/PlayerAnimator.gd" id="6_gjfd3"]
 [ext_resource type="Script" path="res://Player/PlayerStats.gd" id="8_4x74o"]
 [ext_resource type="Script" path="res://Player/HUD/Blur.gd" id="10_jtaw6"]
+[ext_resource type="Script" path="res://Player/HUD/HUD.gd" id="10_uobjc"]
 [ext_resource type="Shader" path="res://Player/HUD/GaussianBlur.gdshader" id="11_mrlut"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0vm1"]
@@ -4613,8 +4614,9 @@ graph_offset = Vector2(-457, 150)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t5i1x"]
 shader = ExtResource("11_mrlut")
-shader_parameter/inner_radius = 0.19
-shader_parameter/outer_radius = 2.93
+shader_parameter/inner_radius = 0.2
+shader_parameter/outer_radius = 1.5
+shader_parameter/green_blue = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_41e0o"]
 viewport_path = NodePath("Viewport/Camera3D/SubViewport")
@@ -4622,7 +4624,8 @@ viewport_path = NodePath("Viewport/Camera3D/SubViewport")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1wt3"]
 shader = ExtResource("11_mrlut")
 shader_parameter/inner_radius = 0.075
-shader_parameter/outer_radius = 3.12
+shader_parameter/outer_radius = 1.0
+shader_parameter/green_blue = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7ciig"]
 viewport_path = NodePath("Viewport/Camera3D/SubViewport2")
@@ -4652,14 +4655,14 @@ shape = SubResource("CapsuleShape3D_28ykw")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6534, 0)
 keep_aspect = 0
-fov = 105.0
+fov = 110.0
 
 [node name="SubViewport" type="SubViewport" parent="Viewport/Camera3D"]
 size = Vector2i(160, 160)
 
 [node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport"]
 keep_aspect = 0
-fov = 105.0
+fov = 110.0
 script = ExtResource("4_64fmy")
 
 [node name="SubViewport2" type="SubViewport" parent="Viewport/Camera3D"]
@@ -4667,7 +4670,7 @@ size = Vector2i(320, 320)
 
 [node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport2"]
 keep_aspect = 0
-fov = 105.0
+fov = 110.0
 script = ExtResource("4_64fmy")
 
 [node name="Arms" type="Node3D" parent="Viewport"]
@@ -4696,21 +4699,21 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.912373, 0.409214, 0.0109051, -0.409359, 0.912056, 0.0240722, -9.5407e-05, -0.026427, 0.999651, 1.28831e-08, 0.457951, -1.78232e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(1.28831e-08, 0.457951, -1.78232e-08)
-bones/2/rotation = Quaternion(-0.0462975, -0.352982, -0.459073, 0.813949)
+bones/2/rotation = Quaternion(-0.0504511, -0.349942, -0.460784, 0.814048)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "forearm.r"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999191, 0.0311243, 0.025463, -0.0401479, 0.808138, 0.587624, -0.00228827, -0.588171, 0.808734, -3.72365e-08, 1.112, -1.11759e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.72365e-08, 1.112, -1.11759e-08)
-bones/3/rotation = Quaternion(-0.430131, 0.00692515, -0.0260729, 0.902363)
+bones/3/rotation = Quaternion(-0.420984, 0.0069583, -0.0255184, 0.906682)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "hand.r"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-0.661167, 0.591641, 0.461324, -0.745907, -0.584373, -0.31958, 0.0805086, -0.5554, 0.827677, 2.15828, -1.5517, -0.277492)
 bones/4/enabled = true
-bones/4/position = Vector3(0.986758, -2.3476, 0.232993)
-bones/4/rotation = Quaternion(0.00226444, -0.0649611, 0.989734, -0.127288)
+bones/4/position = Vector3(0.989042, -2.356, 0.2286)
+bones/4/rotation = Quaternion(0.00284843, -0.0690019, 0.989474, -0.12717)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "thumb1.r"
 bones/5/parent = 4
@@ -4964,7 +4967,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.948466, -0.594512, -3.84067, 3.87183, 0.197549, -0.986741, 0.336298, -3.95111, 0.528558, 0.958614, -2.7286, 0.208578)
+transform = Transform3D(-0.947265, -0.603182, -3.83961, 3.86916, 0.228751, -0.990489, 0.368897, -3.94811, 0.529218, 0.960799, -2.73679, 0.201245)
 bone_name = "weapon"
 bone_idx = 19
 
@@ -4987,6 +4990,7 @@ script = ExtResource("6_gjfd3")
 script = ExtResource("8_4x74o")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("10_uobjc")
 
 [node name="Blur" type="CanvasLayer" parent="HUD"]
 script = ExtResource("10_jtaw6")
