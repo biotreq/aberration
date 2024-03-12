@@ -9,6 +9,7 @@ var health_regain := max_health
 const stamina_regen_rate := 20.0
 const stamina_regain_tickdown_rate := 5.0
 const health_regain_tickdown_rate := 7.5
+const min_stamina := -20.0
 
 var stamina_regain_tween: Tween
 var health_regain_tween: Tween
@@ -36,7 +37,7 @@ func lose_health(amount: float):
 
 func spend_stamina(amount: float):
 	assert(amount > 0)
-	stamina = max(stamina - amount, -40.)
+	stamina = max(stamina - amount, min_stamina)
 	if (
 		!is_ticking_down_stamina_regain
 		and (!stamina_regain_tween or !stamina_regain_tween.is_running())
@@ -81,6 +82,10 @@ func regain_health(amount: float):
 func on_attacked_enemy(effect: Hitbox.AttackEffect):
 	if effect == Hitbox.AttackEffect.Hurt:
 		regain_health(10)
+	if stamina < 0.0:
+		stamina = 0.01
+		if stamina_regain < 0.01:
+			stamina_regain = 0.01
 
 
 var is_ticking_down_health_regain := false
@@ -106,7 +111,7 @@ func _process(delta):
 		if health_regain == health:
 			is_ticking_down_health_regain = false
 	if is_ticking_down_stamina_regain:
-		stamina_regain = move_toward(stamina_regain, stamina, delta * stamina_regain_tickdown_rate)
+		stamina_regain = move_toward(stamina_regain, min(stamina, 0.0), delta * stamina_regain_tickdown_rate)
 		stamina_regain_changed.emit(stamina_regain)
 		if stamina_regain == stamina:
 			is_ticking_down_stamina_regain = false

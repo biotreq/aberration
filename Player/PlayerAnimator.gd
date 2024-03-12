@@ -17,7 +17,7 @@ func _process(_delta):
 	if new_state != current_state:
 		if new_state in attack_states:
 			weapon.activate()
-			stats.spend_stamina(40)
+			stats.spend_stamina(37)
 		if current_state in attack_states:
 			weapon.deactivate()
 		if new_state in block_up_states:
@@ -45,6 +45,8 @@ func request_attack():
 
 
 func request_block():
+	if !stats.can_use_stamina():
+		return
 	if current_state in action_request_states:
 		if current_state == &'Attack1_3a' or current_state == &'Attack2_2a':
 			is_block_queued = true
