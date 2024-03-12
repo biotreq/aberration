@@ -27,11 +27,19 @@ func _physics_process(delta):
 	var input_dir := Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction and can_move:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		var is_running := Input.is_action_pressed('run')
+		var move_speed = speed * 1.8 if is_running else speed
+		velocity.x = direction.x * move_speed
+		velocity.z = direction.z * move_speed
+		if is_running:
+			stats.spend_stamina(1)
+			viewport.position.y = move_toward(viewport.position.y, viewport_position.y + 0.02 + sin(Time.get_ticks_msec() * 0.015) * 0.1, 0.01)
+		else:
+			viewport.position.y = move_toward(viewport.position.y, viewport_position.y + 0.03 + sin(Time.get_ticks_msec() * 0.01) * 0.075, 0.01)
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, speed * 0.1)
+		velocity.z = move_toward(velocity.z, 0, speed * 0.1)
+		viewport.position.y = move_toward(viewport.position.y, viewport_position.y, 0.01)
 
 	move_and_slide()
 	process_action_input()

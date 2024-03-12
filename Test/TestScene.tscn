@@ -37,5 +37,8 @@ mesh = SubResource("BoxMesh_vxrvx")
 [node name="Enemy1" parent="." instance=ExtResource("4_vrj14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75879, 0.5, -5.33777)
 
+[node name="Enemy2" parent="." instance=ExtResource("4_vrj14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2269, 0.5, -10.1157)
+
 [node name="RespawnPoint" type="Node3D" parent="."]
 transform = Transform3D(-0.990483, 0, -0.137635, 0, 1, 0, 0.137635, 0, -0.990483, 14.1343, 1.80097, -13.93)
