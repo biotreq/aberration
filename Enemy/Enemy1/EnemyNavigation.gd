@@ -16,7 +16,11 @@ const optimum_range = 1.4
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent := $NavigationAgent3D as NavigationAgent3D
 @onready var ai := $AnimationTree as AnimationIntelligence
-@onready var player: = get_tree().current_scene.get_node('Player') as CharacterBody3D
+@onready var player := get_tree().current_scene.get_node('Player') as PlayerControl
+@onready var sight_line := $SightLine as RayCast3D
+@onready var stats := $Stats as Stats
+@onready var starting_position := global_position
+@onready var starting_rotation_y := rotation.y
 
 
 func _ready():
@@ -24,6 +28,8 @@ func _ready():
 	var start_stagger := create_tween()
 	start_stagger.tween_interval(randf() * 2.0)
 	start_stagger.tween_callback(ai.start)
+	player.respawned.connect(reset)
+
 
 var state := State.Idle
 var navigation_tween: Tween
@@ -34,6 +40,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	if state == State.Idle:
+		sight_line.look_at(player.global_position)
 		look_for_player()
 
 	if state == State.Traversing:
@@ -60,7 +67,8 @@ func wake_up():
 
 
 func look_for_player():
-	wake_up()
+	if sight_line.is_colliding() and sight_line.get_collider() == player:
+		wake_up()
 
 
 func chase_player():
@@ -88,3 +96,15 @@ func can_reach_player() -> bool:
 
 
 signal reached_player()
+
+
+func reset():
+	if stats.is_dead():
+		return
+	state = State.Idle
+	if navigation_tween:
+		navigation_tween.kill()
+	ai.reset()
+	stats.reset()
+	global_position = starting_position
+	rotation.y = starting_rotation_y

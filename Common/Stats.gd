@@ -12,5 +12,13 @@ func lose_health(amount: float):
 		died.emit()
 
 
+func is_dead():
+	return health <= 0
+
+
+func reset():
+	health = max_health
+
+
 signal died()
 signal respawned()

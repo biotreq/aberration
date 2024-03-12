@@ -1,4 +1,5 @@
 extends CharacterBody3D
+class_name PlayerControl
 
 
 const speed = 2.0
@@ -9,7 +10,9 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 @onready var animator: = $'AnimationTree' as PlayerAnimator
 @onready var stats := $Stats as PlayerStats
 @onready var viewport := $Viewport as Node3D
+@onready var viewport_position := viewport.position
 @export var respawn_point: Node3D
+var can_move := true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -23,7 +26,7 @@ func _physics_process(delta):
 
 	var input_dir := Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
+	if direction and can_move:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
 	else:
@@ -45,6 +48,8 @@ func _input(event):
 
 
 func process_action_input():
+	if !can_move:
+		return
 	if Input.is_action_just_pressed('attack'):
 		animator.request_attack()
 	if Input.is_action_just_pressed('block'):
@@ -52,13 +57,12 @@ func process_action_input():
 
 
 func handle_death():
-	var fall_tween := create_tween()
-	var viewport_position := viewport.position
-	fall_tween.tween_property(viewport, 'position', viewport_position + Vector3(0, -1.5, 0), 3.5)
-	fall_tween.tween_property(viewport, 'position', viewport_position, 0.1)
+	can_move = false
+	create_tween().tween_property(viewport, 'position', viewport_position + Vector3(0, -1.2, 0), 2.0)
 	var respawn_tween := create_tween()
 	respawn_tween.tween_interval(4.0)
 	respawn_tween.tween_callback(respawn)
+
 
 func respawn():
 	stats.respawn()
@@ -68,5 +72,8 @@ func respawn():
 	var hud = $HUD as HUD
 	hud.fade_in()
 	hud.play_respawn_blur()
+	var stand_up := create_tween()
+	stand_up.tween_property(viewport, 'position', viewport_position, 6.0)
+	stand_up.tween_property(self, 'can_move', true, 0.0)
 
 signal respawned()

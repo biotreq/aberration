@@ -128,3 +128,7 @@ func die():
 	playback.start(&'Die')
 	hitbox.notify_hurt.disconnect(receive_attack)
 	stats.died.disconnect(die)
+
+
+func reset():
+	playback.start(&'Idle', false)
