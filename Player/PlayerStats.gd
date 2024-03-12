@@ -82,10 +82,11 @@ func regain_health(amount: float):
 func on_attacked_enemy(effect: Hitbox.AttackEffect):
 	if effect == Hitbox.AttackEffect.Hurt:
 		regain_health(10)
-	if stamina < 0.0:
-		stamina = 0.01
-		if stamina_regain < 0.01:
-			stamina_regain = 0.01
+	var second_wind_amount := -5.0 if effect == Hitbox.AttackEffect.Hurt else 0.001
+	if stamina < second_wind_amount:
+		stamina = second_wind_amount
+		if stamina_regain < second_wind_amount:
+			stamina_regain = second_wind_amount
 
 
 var is_ticking_down_health_regain := false

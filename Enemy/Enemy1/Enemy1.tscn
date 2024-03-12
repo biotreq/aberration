@@ -7120,6 +7120,6 @@ path_desired_distance = 1.2
 script = ExtResource("8_4uvco")
 
 [node name="SightLine" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85787, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57434, 0)
 target_position = Vector3(0, 0, -5)
 collision_mask = 9
