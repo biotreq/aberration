@@ -124,3 +124,24 @@ signal health_changed(amount: float)
 signal health_regain_changed(amount: float)
 signal stamina_changed(amount: float)
 signal stamina_regain_changed(amount: float)
+
+
+func respawn():
+	if stamina_regain_tween:
+		stamina_regain_tween.kill()
+	if health_regain_tween:
+		health_regain_tween.kill()
+	if stamina_regen_tween:
+		stamina_regen_tween.kill()
+	is_ticking_down_health_regain = false
+	is_ticking_down_stamina_regain = false
+	is_regenerating_stamina = false
+	health = max_health
+	health_regain = max_health
+	stamina = max_stamina
+	stamina_regain = max_stamina
+	health_changed.emit(health)
+	health_regain_changed.emit(health_regain)
+	stamina_changed.emit(stamina)
+	stamina_regain_changed.emit(stamina_regain)
+	respawned.emit()

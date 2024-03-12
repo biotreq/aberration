@@ -15,6 +15,11 @@ const block_threshold := 0.9
 @onready var stats := $'../Stats' as Stats
 
 
+func _ready():
+	stats.died.connect(disable)
+	stats.respawned.connect(enable)
+
+
 func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	var block_state = state_animator.get_block_state()
 	if block_state != StateAnimator.BlockState.None:
@@ -40,3 +45,11 @@ func get_dot_to(target: Node3D) -> float:
 
 
 signal notify_hurt(damage: float)
+
+
+func disable():
+	set_deferred('monitorable', false)
+
+
+func enable():
+	monitorable = true

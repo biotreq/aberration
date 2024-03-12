@@ -10,6 +10,9 @@ const light_blur_low_radius := 1.0
 const heavy_blur_high_radius := 2.93
 const heavy_blur_low_radius := 1.5
 
+const light_blur_inner_radius := 0.125
+const heavy_blur_inner_radius := 0.2
+
 var damage_tween: Tween
 
 func _ready():
@@ -43,6 +46,15 @@ func play_damage_feedback():
 	damage_tween.tween_method(set_heavy_blur_amount, heavy_blur_high_radius, heavy_blur_low_radius, 4.0)
 
 
+func play_respawn_blur():
+	damage_tween = create_tween()
+	damage_tween.set_parallel()
+	damage_tween.tween_method(set_light_blur_amount, light_blur_high_radius, light_blur_low_radius, 8.0)
+	damage_tween.tween_method(set_heavy_blur_amount, heavy_blur_high_radius, heavy_blur_low_radius, 6.0)
+	damage_tween.tween_method(set_light_inner, -1.0, light_blur_inner_radius, 8.0)
+	damage_tween.tween_method(set_heavy_inner, -1.0, heavy_blur_inner_radius, 6.0)
+
+
 func color_light_blur(amount: float):
 	light_blur.material.set('shader_parameter/green_blue', amount)
 
@@ -57,3 +69,11 @@ func set_light_blur_amount(amount: float):
 
 func set_heavy_blur_amount(amount: float):
 	heavy_blur.material.set('shader_parameter/outer_radius', amount)
+
+
+func set_light_inner(amount: float):
+	light_blur.material.set('shader_parameter/inner_radius', amount)
+
+
+func set_heavy_inner(amount: float):
+	heavy_blur.material.set('shader_parameter/inner_radius', amount)

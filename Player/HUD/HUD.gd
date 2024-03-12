@@ -3,7 +3,8 @@ class_name HUD
 
 
 @onready var blur_effect := $Blur as BlurEffect
-@onready var stats_display := $Stats
+@onready var stats_display := $Stats as Control
+@onready var black_fade := $Black as BlackFade
 
 func _ready():
 	var hitbox := $'../Hitbox' as Hitbox
@@ -15,6 +16,7 @@ func _ready():
 	stats.stamina_regain_changed.connect(($'Stats/StaminaRegainBar' as TextureProgressBar).set_value_no_signal)
 	get_tree().get_root().connect('size_changed', reposition_stats)
 	reposition_stats()
+	stats.died.connect(black_fade.fade_out)
 
 
 func register_damage(_damage: float):
@@ -27,4 +29,10 @@ func reposition_stats():
 	var stats_scale := screen_size.x * 0.0004
 	print(stats_scale)
 	stats_display.scale = Vector2(stats_scale, stats_scale)
-	
+
+
+func fade_in():
+	black_fade.fade_in()
+
+func play_respawn_blur():
+	blur_effect.play_respawn_blur()

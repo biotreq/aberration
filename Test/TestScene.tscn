@@ -17,8 +17,9 @@ size = Vector3(30, 1, 30)
 
 [node name="TestScene" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_1uwoe")]
+[node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_1uwoe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.26357, 0)
+respawn_point = NodePath("../RespawnPoint")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -35,3 +36,6 @@ mesh = SubResource("BoxMesh_vxrvx")
 
 [node name="Enemy1" parent="." instance=ExtResource("4_vrj14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.75879, 0.5, -5.33777)
+
+[node name="RespawnPoint" type="Node3D" parent="."]
+transform = Transform3D(-0.990483, 0, -0.137635, 0, 1, 0, 0.137635, 0, -0.990483, 14.1343, 1.80097, -13.93)

@@ -7,10 +7,14 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 @onready var camera: = $'%Camera3D' as Camera3D
 @onready var arms: = $'Viewport/Arms' as Node3D
 @onready var animator: = $'AnimationTree' as PlayerAnimator
+@onready var stats := $Stats as PlayerStats
+@onready var viewport := $Viewport as Node3D
+@export var respawn_point: Node3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	get_window().mode = Window.MODE_MAXIMIZED
+	stats.died.connect(handle_death)
 
 
 func _physics_process(delta):
@@ -45,3 +49,24 @@ func process_action_input():
 		animator.request_attack()
 	if Input.is_action_just_pressed('block'):
 		animator.request_block()
+
+
+func handle_death():
+	var fall_tween := create_tween()
+	var viewport_position := viewport.position
+	fall_tween.tween_property(viewport, 'position', viewport_position + Vector3(0, -1.5, 0), 3.5)
+	fall_tween.tween_property(viewport, 'position', viewport_position, 0.1)
+	var respawn_tween := create_tween()
+	respawn_tween.tween_interval(4.0)
+	respawn_tween.tween_callback(respawn)
+
+func respawn():
+	stats.respawn()
+	global_position = respawn_point.global_position
+	rotation.y = respawn_point.rotation.y
+	respawned.emit()
+	var hud = $HUD as HUD
+	hud.fade_in()
+	hud.play_respawn_blur()
+
+signal respawned()

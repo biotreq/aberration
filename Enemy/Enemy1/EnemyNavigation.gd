@@ -21,10 +21,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	navigation_agent.path_desired_distance = optimum_range
-	# var start_stagger := create_tween()
-	# start_stagger.tween_interval(randf() * 2.0)
-	# start_stagger.tween_callback(ai.start)
-	ai.start()
+	var start_stagger := create_tween()
+	start_stagger.tween_interval(randf() * 2.0)
+	start_stagger.tween_callback(ai.start)
 
 var state := State.Idle
 var navigation_tween: Tween

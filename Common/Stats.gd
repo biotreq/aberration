@@ -13,3 +13,4 @@ func lose_health(amount: float):
 
 
 signal died()
+signal respawned()
