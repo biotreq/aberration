@@ -4809,21 +4809,21 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.912373, 0.409214, 0.0109051, -0.409359, 0.912056, 0.0240722, -9.5407e-05, -0.026427, 0.999651, 1.28831e-08, 0.457951, -1.78232e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(1.28831e-08, 0.457951, -1.78232e-08)
-bones/2/rotation = Quaternion(-0.071145, -0.335023, -0.469156, 0.813997)
+bones/2/rotation = Quaternion(-0.0601838, -0.342888, -0.464752, 0.814132)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "forearm.r"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999191, 0.0311243, 0.025463, -0.0401479, 0.808138, 0.587624, -0.00228827, -0.588171, 0.808734, -3.72365e-08, 1.112, -1.11759e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.72365e-08, 1.112, -1.11759e-08)
-bones/3/rotation = Quaternion(-0.374318, 0.00711417, -0.0226897, 0.926996)
+bones/3/rotation = Quaternion(-0.39919, 0.00703379, -0.0241974, 0.916522)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "hand.r"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-0.661167, 0.591641, 0.461324, -0.745907, -0.584373, -0.31958, 0.0805086, -0.5554, 0.827677, 2.15828, -1.5517, -0.277492)
 bones/4/enabled = true
-bones/4/position = Vector3(0.999758, -2.39541, 0.207991)
-bones/4/rotation = Quaternion(0.00559053, -0.0879641, 0.988032, -0.126586)
+bones/4/position = Vector3(0.994237, -2.3751, 0.218609)
+bones/4/rotation = Quaternion(0.00417799, -0.0781983, 0.98882, -0.126893)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "thumb1.r"
 bones/5/parent = 4
@@ -5077,7 +5077,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.940659, -0.643759, -3.83464, 3.85316, 0.374948, -1.00815, 0.521637, -3.93049, 0.531889, 0.970964, -2.77492, 0.166853)
+transform = Transform3D(-0.944261, -0.622886, -3.83721, 3.86211, 0.299704, -0.999038, 0.443027, -3.9403, 0.530601, 0.965745, -2.75534, 0.184566)
 bone_name = "weapon"
 bone_idx = 19
 
@@ -5189,7 +5189,6 @@ texture = SubResource("GradientTexture2D_ed0ir")
 centered = false
 
 [node name="Label" type="Label" parent="HUD/Tooltips/OpenTooltip"]
-visible = false
 offset_left = 18.0
 offset_top = 13.0
 offset_right = 111.0

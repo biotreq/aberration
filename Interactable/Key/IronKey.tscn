@@ -62,3 +62,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_a5neh")
 
 [node name="light" parent="." instance=ExtResource("4_kki4m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0573758, 0)
+
+[node name="light2" parent="." instance=ExtResource("4_kki4m")]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0, 0.0573758, 0)

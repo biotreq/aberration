@@ -86,4 +86,4 @@ func respawn():
 
 signal respawned()
 
-var keys := []
+var keys := [&'TestKey']

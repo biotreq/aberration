@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=170 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://bfbltnoh4hkub" path="res://Terrain/Clutter/DeadGuy.tscn" id="16_7hira"]
 [ext_resource type="PackedScene" uid="uid://c2fson7maq57p" path="res://Interactable/Key/IronKey.tscn" id="18_eno8d"]
 [ext_resource type="PackedScene" uid="uid://d0wbtog8pdyig" path="res://Interactable/Key/BrassKey.tscn" id="19_j0c7c"]
+[ext_resource type="PackedScene" uid="uid://w1ht5qrco07g" path="res://Interactable/Door/Door.tscn" id="20_nvrc1"]
+[ext_resource type="Script" path="res://Interactable/Door/DoorTrigger.gd" id="21_38dvk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1516,6 +1518,9 @@ shadow_mesh = SubResource("ArrayMesh_nkwyv")
 render_priority = 0
 shader = ExtResource("12_88a5j")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mtrbt"]
+size = Vector3(1.51868, 2.41205, 0.177096)
+
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_l7hs0")]
@@ -1633,7 +1638,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("7_83321")
 
 [node name="Bridge" type="MeshInstance3D" parent="terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7409, -0.765805, -1.02746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7409, -0.716829, -1.02746)
 mesh = SubResource("ArrayMesh_8togo")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("7_83321")
@@ -1823,7 +1828,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_o2lnu")
 
 [node name="Bridge_001" type="MeshInstance3D" parent="NavigationRegion3D/terrain_collision"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7409, -0.765805, -1.02746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7409, -0.716829, -1.02746)
 mesh = SubResource("ArrayMesh_snwgj")
 skeleton = NodePath("")
 
@@ -1899,3 +1904,38 @@ transform = Transform3D(0.878925, 0, -0.476959, 0, 1, 0, 0.476959, 0, 0.878925, 
 
 [node name="BrassKey" parent="." instance=ExtResource("19_j0c7c")]
 transform = Transform3D(0.9728, 0, 0.231646, 0, 1, 0, -0.231646, 0, 0.9728, -9.63553, 0.356079, -18.5826)
+
+[node name="Door" parent="." instance=ExtResource("20_nvrc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.307, 3.46916, 2.22003)
+target_rotation = 1.57
+turn_rate = 0.01
+
+[node name="DoorTrigger" type="StaticBody3D" parent="." node_paths=PackedStringArray("door")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5162, 4.71589, 2.34239)
+collision_layer = 128
+collision_mask = 138
+script = ExtResource("21_38dvk")
+key_name = &"BrassKey"
+door = NodePath("../Door")
+tooltip_id = &"Open"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0582387)
+shape = SubResource("BoxShape3D_mtrbt")
+
+[node name="Door2" parent="." instance=ExtResource("20_nvrc1")]
+transform = Transform3D(-3.97774e-08, 0, 0.91, 0, 0.91, 0, -0.91, 0, -3.97774e-08, 13.8231, -1.44285, -0.468195)
+turn_rate = 0.01
+
+[node name="DoorTrigger2" type="StaticBody3D" parent="." node_paths=PackedStringArray("door")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 13.8743, -0.196115, -1.20869)
+collision_layer = 128
+collision_mask = 138
+script = ExtResource("21_38dvk")
+key_name = &"IronKey"
+door = NodePath("../Door2")
+tooltip_id = &"Open"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0582387)
+shape = SubResource("BoxShape3D_mtrbt")
