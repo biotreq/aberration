@@ -4629,7 +4629,7 @@ shader_parameter/outer_radius = 1.0
 shader_parameter/green_blue = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7ciig"]
-viewport_path = NodePath("Viewport/Camera3D/SubViewport2")
+viewport_path = NodePath("Viewport/Camera3D/SubViewport/SubViewport2")
 
 [sub_resource type="Gradient" id="Gradient_v0nr6"]
 offsets = PackedFloat32Array(0)
@@ -4726,14 +4726,10 @@ fov = 90.0
 [node name="SubViewport" type="SubViewport" parent="Viewport/Camera3D"]
 size = Vector2i(210, 100)
 
-[node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport"]
-fov = 90.0
-script = ExtResource("4_64fmy")
-
-[node name="SubViewport2" type="SubViewport" parent="Viewport/Camera3D"]
+[node name="SubViewport2" type="SubViewport" parent="Viewport/Camera3D/SubViewport"]
 size = Vector2i(420, 180)
 
-[node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport2"]
+[node name="SubCamera" type="Camera3D" parent="Viewport/Camera3D/SubViewport/SubViewport2"]
 fov = 90.0
 script = ExtResource("4_64fmy")
 
@@ -4763,21 +4759,21 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.912373, 0.409214, 0.0109051, -0.409359, 0.912056, 0.0240722, -9.5407e-05, -0.026427, 0.999651, 1.28831e-08, 0.457951, -1.78232e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(1.28831e-08, 0.457951, -1.78232e-08)
-bones/2/rotation = Quaternion(-0.0762251, -0.331414, -0.471176, 0.813847)
+bones/2/rotation = Quaternion(-0.078753, -0.329626, -0.472176, 0.813753)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "forearm.r"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999191, 0.0311243, 0.025463, -0.0401479, 0.808138, 0.587624, -0.00228827, -0.588171, 0.808734, -3.72365e-08, 1.112, -1.11759e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.72365e-08, 1.112, -1.11759e-08)
-bones/3/rotation = Quaternion(-0.362647, 0.00714982, -0.0219823, 0.93164)
+bones/3/rotation = Quaternion(-0.356788, 0.00716721, -0.0216272, 0.933908)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "hand.r"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-0.661167, 0.591641, 0.461324, -0.745907, -0.584373, -0.31958, 0.0805086, -0.5554, 0.827677, 2.15828, -1.5517, -0.277492)
 bones/4/enabled = true
-bones/4/position = Vector3(1.0022, -2.4044, 0.203289)
-bones/4/rotation = Quaternion(0.00620262, -0.0921942, 0.98766, -0.12645)
+bones/4/position = Vector3(1.0034, -2.40881, 0.200984)
+bones/4/rotation = Quaternion(0.00652024, -0.0943889, 0.98746, -0.126378)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "thumb1.r"
 bones/5/parent = 4
@@ -5031,7 +5027,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.938971, -0.652782, -3.83353, 3.84881, 0.4075, -1.0121, 0.555647, -3.92576, 0.532389, 0.973268, -2.78356, 0.159082)
+transform = Transform3D(-0.938064, -0.657459, -3.83295, 3.84645, 0.424379, -1.01416, 0.573281, -3.92319, 0.532634, 0.974392, -2.78777, 0.155185)
 bone_name = "weapon"
 bone_idx = 19
 

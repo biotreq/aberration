@@ -7077,7 +7077,7 @@ skin = SubResource("Skin_mau5w")
 surface_material_override/0 = SubResource("ShaderMaterial_yo5wb")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="badguy1/GuyArmature/Skeleton3D"]
-transform = Transform3D(3.10804, 0.895739, 0.534927, 0.562154, -0.0217318, -3.22985, -0.878907, 3.15367, -0.174193, -0.718308, 1.89458, -0.106942)
+transform = Transform3D(3.10804, 0.895738, 0.534926, 0.562151, -0.0217279, -3.22985, -0.878906, 3.15367, -0.174188, -0.718308, 1.89458, -0.106941)
 bone_name = "weapon"
 bone_idx = 15
 
@@ -7089,7 +7089,7 @@ holder = NodePath("../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_ajd5t")
 }
-blend_times = [&"Counter_2a", &"ParryStun", 0.2, &"Combo2_2a", &"ParryStun", 0.2, &"WalkForward", &"Combo1", 0.5, &"WalkForward", &"Combo2", 0.5, &"Combo2_4a", &"ParryStun", 0.2, &"Combo1_4a", &"ParryStun", 0.2, &"Idle", &"Activate", 0.5, &"Combo1_2a", &"ParryStun", 0.2]
+blend_times = [&"Idle", &"Activate", 0.5, &"Counter_2a", &"ParryStun", 0.2, &"Combo2_4a", &"ParryStun", 0.2, &"WalkForward", &"Combo1", 0.5, &"WalkForward", &"Combo2", 0.5, &"Combo1_4a", &"ParryStun", 0.2, &"Combo1_2a", &"ParryStun", 0.2, &"Combo2_2a", &"ParryStun", 0.2]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w7qtv")

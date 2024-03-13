@@ -1,7 +1,7 @@
 extends Camera3D
 
 
-@onready var main_cam := $'../..' as Node3D
+@onready var main_cam := $%Camera3D as Node3D
 
 
 func _process(_delta):
