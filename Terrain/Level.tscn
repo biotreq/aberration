@@ -1529,7 +1529,7 @@ transform = Transform3D(0.999989, 0, -0.00471232, 0, 1, 0, 0.00471232, 0, 0.9999
 respawn_point = NodePath("../RespawnPoint")
 
 [node name="RespawnPoint" type="Node3D" parent="."]
-transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -0.820225, -2.46952, -2.43421)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.820225, -2.46952, -2.43421)
 
 [node name="terrain" type="Node3D" parent="."]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)

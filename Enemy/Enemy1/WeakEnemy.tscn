@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://d2ju6twhr22vp"]
+[gd_scene load_steps=104 format=3 uid="uid://d2ju6twhr22vp"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy1/EnemyNavigation.gd" id="1_jyp6b"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_2cc1e"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Common/Stats.gd" id="8_e5ct8"]
 [ext_resource type="AudioStream" uid="uid://bmydy2o3b2kfy" path="res://Common/ClashEffects/sfx/slash1-94367.mp3" id="8_vrmhr"]
 [ext_resource type="Script" path="res://Common/PtichShiftSound.gd" id="9_xhmp8"]
+[ext_resource type="AudioStream" uid="uid://dedocqotv6cq" path="res://Enemy/Enemy1/083302_sigh-84912.mp3" id="11_g60ki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awxi0"]
 vertex_color_use_as_albedo = true
@@ -6846,6 +6847,7 @@ radius = 0.320407
 [node name="WeakEnemy" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 11
+wall_min_slide_angle = 0.0
 script = ExtResource("1_jyp6b")
 
 [node name="badguy1" type="Node3D" parent="."]
@@ -7091,7 +7093,7 @@ holder = NodePath("../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_ajd5t")
 }
-blend_times = [&"Combo2_2a", &"ParryStun", 0.2, &"Counter_2a", &"ParryStun", 0.2, &"Combo1_2a", &"ParryStun", 0.2, &"Combo2_4a", &"ParryStun", 0.2, &"WalkForward", &"Combo2", 0.5, &"WalkForward", &"Combo1", 0.5, &"Combo1_4a", &"ParryStun", 0.2, &"Idle", &"Activate", 0.5]
+blend_times = [&"Combo2_4a", &"ParryStun", 0.2, &"Combo1_2a", &"ParryStun", 0.2, &"Counter_2a", &"ParryStun", 0.2, &"WalkForward", &"Combo1", 0.5, &"WalkForward", &"Combo2", 0.5, &"Combo2_2a", &"ParryStun", 0.2, &"Idle", &"Activate", 0.5, &"Combo1_4a", &"ParryStun", 0.2]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w7qtv")
@@ -7132,3 +7134,9 @@ max_health = 50.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57434, 0)
 target_position = Vector3(0, 0, -2.5)
 collision_mask = 9
+
+[node name="Groan" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57146, 0)
+stream = ExtResource("11_g60ki")
+volume_db = -6.754
+pitch_scale = 0.6

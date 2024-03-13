@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d0wbtog8pdyig"]
 
 [ext_resource type="Script" path="res://Interactable/Key/Key.gd" id="1_y4pgr"]
-[ext_resource type="Texture2D" uid="uid://7e2bw14k36tm" path="res://Interactable/Key/brass.png" id="2_y61ef"]
+[ext_resource type="Texture2D" uid="uid://dkd01sdba4k45" path="res://Interactable/Key/iron.png" id="3_rfbuy"]
 [ext_resource type="PackedScene" uid="uid://ik2mil0s8oek" path="res://Interactable/Glint.tscn" id="4_peyp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jgqga"]
@@ -66,7 +66,7 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xe1kf"]
 render_priority = 0
 shader = SubResource("Shader_mmmpr")
-shader_parameter/albedo = ExtResource("2_y61ef")
+shader_parameter/albedo = ExtResource("3_rfbuy")
 
 [node name="BrassKey" type="StaticBody3D"]
 script = ExtResource("1_y4pgr")

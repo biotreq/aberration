@@ -7,6 +7,7 @@ class_name AnimationIntelligence
 @onready var weapon := $'%Weapon' as Weapon
 @onready var hitbox := $'../Hitbox' as Hitbox
 @onready var stats := $'../Stats' as Stats
+@onready var groan := $'../Groan' as AudioStreamPlayer3D
 const parry_tendency := 0.25
 
 func _ready():
@@ -53,6 +54,7 @@ func start():
 
 func activate():
 	playback.travel(&'Activate')
+	groan.play()
 
 
 func start_fighting():

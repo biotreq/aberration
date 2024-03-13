@@ -42,8 +42,8 @@ func play_damage_feedback():
 	damage_tween.set_parallel()
 	damage_tween.tween_method(color_light_blur, 0.8, 1.0, 0.5)
 	damage_tween.tween_method(color_heavy_blur, 0.0, 1.0, 1.0)
-	damage_tween.tween_method(set_light_blur_amount, light_blur_high_radius, light_blur_low_radius, 6.0)
-	damage_tween.tween_method(set_heavy_blur_amount, heavy_blur_high_radius, heavy_blur_low_radius, 4.0)
+	damage_tween.tween_method(set_light_blur_amount, light_blur_high_radius, light_blur_low_radius, 8.0)
+	damage_tween.tween_method(set_heavy_blur_amount, heavy_blur_high_radius, heavy_blur_low_radius, 6.0)
 
 
 func play_respawn_blur():

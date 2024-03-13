@@ -76,14 +76,18 @@ func respawn():
 	stats.respawn()
 	global_position = respawn_point.global_position
 	rotation.y = respawn_point.rotation.y
-	respawned.emit()
 	var hud = $HUD as HUD
 	hud.fade_in()
 	hud.play_respawn_blur()
 	var stand_up := create_tween()
 	stand_up.tween_property(viewport, 'position', viewport_position, 6.0)
 	stand_up.tween_property(self, 'can_move', true, 0.0)
+	var emit_tween := create_tween()
+	emit_tween.tween_interval(0.05)
+	emit_tween.tween_callback(emit_respawned)
 
 signal respawned()
+func emit_respawned():
+	respawned.emit()
 
 var keys := [&'TestKey']
