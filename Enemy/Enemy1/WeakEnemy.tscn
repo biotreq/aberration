@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://d2ju6twhr22vp"]
+[gd_scene load_steps=103 format=3 uid="uid://d2ju6twhr22vp"]
 
 [ext_resource type="Script" path="res://Enemy/Enemy1/EnemyNavigation.gd" id="1_jyp6b"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="2_2cc1e"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Common/Hitbox.gd" id="6_wcdf1"]
 [ext_resource type="PackedScene" uid="uid://b2k6o8ydgy3aw" path="res://Common/ClashEffects/Blood.tscn" id="7_wog3t"]
 [ext_resource type="Script" path="res://Common/Stats.gd" id="8_e5ct8"]
+[ext_resource type="AudioStream" uid="uid://bmydy2o3b2kfy" path="res://Common/ClashEffects/sfx/slash1-94367.mp3" id="8_vrmhr"]
+[ext_resource type="Script" path="res://Common/PtichShiftSound.gd" id="9_xhmp8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awxi0"]
 vertex_color_use_as_albedo = true
@@ -7112,6 +7114,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52984, -0.152583)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_n2ebc")
+
+[node name="Hit" type="AudioStreamPlayer3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32599, 0)
+stream = ExtResource("8_vrmhr")
+volume_db = -11.064
+script = ExtResource("9_xhmp8")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 1.2

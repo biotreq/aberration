@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://w1ht5qrco07g"]
+[gd_scene load_steps=14 format=3 uid="uid://w1ht5qrco07g"]
 
 [ext_resource type="Script" path="res://Interactable/Door/Door.gd" id="1_y14e8"]
 [ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="2_soptf"]
 [ext_resource type="Texture2D" uid="uid://b6xua10ghnoqt" path="res://Terrain/Clutter/tex/wood2.png" id="3_r3onn"]
 [ext_resource type="Texture2D" uid="uid://lraw4bkbswgb" path="res://Interactable/Door/lock.png" id="4_6vqn8"]
+[ext_resource type="AudioStream" uid="uid://buxv4y7x1tbfp" path="res://Interactable/Door/sfx/jp_lockedknob08-42735.mp3" id="5_dm27k"]
+[ext_resource type="AudioStream" uid="uid://fb2udyrq2dad" path="res://Interactable/Door/sfx/door-unlocking-101333.mp3" id="6_qe27n"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_olxcm"]
 
@@ -82,3 +84,11 @@ surface_material_override/1 = SubResource("ShaderMaterial_j1yv8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.737419, 1.14834, 0)
 shape = SubResource("BoxShape3D_360go")
+
+[node name="LockedSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24395, 1.20123, 0)
+stream = ExtResource("5_dm27k")
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704367, 1.48163, 0)
+stream = ExtResource("6_qe27n")

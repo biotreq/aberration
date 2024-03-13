@@ -8,6 +8,7 @@ class_name Weapon
 @onready var block_effect := $BlockEffect as GPUParticles3D
 @onready var parry_effect := $ParryEffect as GPUParticles3D
 @onready var flare := $Flare as Node3D
+@onready var sfx := $SwordSFX as SwordSFX
 
 func _ready():
 	area_entered.connect(attack)
@@ -23,6 +24,7 @@ func attack(hitbox: Area3D):
 
 func activate():
 	monitoring = true
+	sfx.play_swish()
 
 
 func deactivate():
@@ -31,6 +33,7 @@ func deactivate():
 
 func spark():
 	block_effect.emitting = true
+	sfx.play_clash()
 
 
 func big_spark():
@@ -39,6 +42,7 @@ func big_spark():
 	flare.scale = Vector3.ONE * 0.3
 	var tween := create_tween()
 	tween.tween_property(flare, 'scale', Vector3.ZERO, 0.1)
+	sfx.play_strong_clash()
 
 
 signal notify_attack_effect(effect: Hitbox.AttackEffect)

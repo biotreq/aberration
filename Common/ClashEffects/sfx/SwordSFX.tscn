@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://doc3y15g45m5s"]
+
+[ext_resource type="Script" path="res://Common/ClashEffects/sfx/SwordSFX.gd" id="1_4lb67"]
+[ext_resource type="AudioStream" uid="uid://y8mjs8ti2li4" path="res://Common/ClashEffects/sfx/080174_sword_clash-13wav-83428.mp3" id="2_exq8n"]
+[ext_resource type="Script" path="res://Common/PtichShiftSound.gd" id="3_anygi"]
+[ext_resource type="AudioStream" uid="uid://dyehyjl4h3fdl" path="res://Common/ClashEffects/sfx/sword-hit-7160.mp3" id="3_eq66a"]
+[ext_resource type="AudioStream" uid="uid://dulyk8qhcfkge" path="res://Common/ClashEffects/sfx/my-sword-hit-1wav-89026.mp3" id="4_m0lkb"]
+[ext_resource type="AudioStream" uid="uid://c182wxy151twg" path="res://Common/ClashEffects/sfx/sword-clash-1-6917.mp3" id="5_o7yv7"]
+[ext_resource type="AudioStream" uid="uid://dsg2cbfuix1te" path="res://Common/ClashEffects/sfx/clean-fast-swooshaiff-14784.mp3" id="6_mbf0t"]
+
+[node name="SwordSFX" type="Node3D"]
+script = ExtResource("1_4lb67")
+
+[node name="Clash1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_exq8n")
+script = ExtResource("3_anygi")
+
+[node name="Clash2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_eq66a")
+script = ExtResource("3_anygi")
+
+[node name="StrongClash1" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_m0lkb")
+volume_db = -6.809
+script = ExtResource("3_anygi")
+
+[node name="StrongClash2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_o7yv7")
+volume_db = -9.362
+script = ExtResource("3_anygi")
+
+[node name="Swish" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_mbf0t")
+volume_db = -10.0
+script = ExtResource("3_anygi")

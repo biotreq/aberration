@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=171 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d0wbtog8pdyig" path="res://Interactable/Key/BrassKey.tscn" id="19_j0c7c"]
 [ext_resource type="PackedScene" uid="uid://w1ht5qrco07g" path="res://Interactable/Door/Door.tscn" id="20_nvrc1"]
 [ext_resource type="Script" path="res://Interactable/Door/DoorTrigger.gd" id="21_38dvk"]
+[ext_resource type="AudioStream" uid="uid://1woaoqqtsqq" path="res://Common/sfx/moving-low-frequencies-30842.mp3" id="22_fymhk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1939,3 +1940,8 @@ tooltip_id = &"Open"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DoorTrigger2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0582387)
 shape = SubResource("BoxShape3D_mtrbt")
+
+[node name="Ambient" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_fymhk")
+pitch_scale = 0.85
+autoplay = true

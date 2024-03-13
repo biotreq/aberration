@@ -9,3 +9,5 @@ func interact(player: PlayerControl):
 	if key_name in player.keys:
 		door.open()
 		queue_free()
+	else:
+		door.fail_open()

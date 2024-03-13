@@ -13,6 +13,7 @@ enum AttackEffect {
 const block_threshold := 0.9
 @onready var blood_splatter := $Blood as GPUParticles3D
 @onready var stats := $'../Stats' as Stats
+@onready var hit_effect := $Hit as PitchShiftSound
 
 
 func _ready():
@@ -34,6 +35,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 	stats.lose_health(damage)
 	notify_hurt.emit(damage)
 	blood_splatter.emitting = true
+	hit_effect.play_pitched()
 	return AttackEffect.Hurt
 
 func get_dot_to(target: Node3D) -> float:

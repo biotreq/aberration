@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3flphxegwmtg"]
+[gd_scene load_steps=11 format=3 uid="uid://d3flphxegwmtg"]
 
 [ext_resource type="Script" path="res://Common/Weapon.gd" id="1_7xl6d"]
 [ext_resource type="PackedScene" uid="uid://u3jwick8y2h2" path="res://Common/ClashEffects/BlockEffect.tscn" id="2_67mlr"]
 [ext_resource type="PackedScene" uid="uid://b2i3jt627r06v" path="res://Common/ClashEffects/ParryEffect.tscn" id="3_j2lny"]
 [ext_resource type="Shader" path="res://Enemy/Character.gdshader" id="4_ky2ij"]
+[ext_resource type="PackedScene" uid="uid://doc3y15g45m5s" path="res://Common/ClashEffects/sfx/SwordSFX.tscn" id="5_84wkq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw72t"]
 vertex_color_use_as_albedo = true
@@ -72,3 +73,6 @@ shape = SubResource("CapsuleShape3D_e0mma")
 metadata/_edit_group_ = true
 
 [node name="Flare" type="Node3D" parent="."]
+
+[node name="SwordSFX" parent="." instance=ExtResource("5_84wkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.395439, 0)
