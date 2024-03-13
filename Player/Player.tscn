@@ -4686,7 +4686,7 @@ width = 512
 height = 24
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Shader" id="Shader_exo7q"]
+[sub_resource type="Shader" id="Shader_aieh4"]
 code = "shader_type canvas_item;
 render_mode blend_sub,unshaded;
 
@@ -4698,7 +4698,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oiav3"]
-shader = SubResource("Shader_exo7q")
+shader = SubResource("Shader_aieh4")
 shader_parameter/magnitude = 0.0
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_atg7n"]
@@ -4726,12 +4726,12 @@ colors = PackedColorArray(0.521141, 0.521141, 0.521141, 1)
 gradient = SubResource("Gradient_lfry4")
 width = 159
 
-[sub_resource type="Gradient" id="Gradient_i3c6s"]
+[sub_resource type="Gradient" id="Gradient_s5hog"]
 offsets = PackedFloat32Array(0)
 colors = PackedColorArray(0.521141, 0.521141, 0.521141, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_px4po"]
-gradient = SubResource("Gradient_i3c6s")
+gradient = SubResource("Gradient_s5hog")
 width = 424
 height = 214
 
@@ -4820,21 +4820,21 @@ bones/2/parent = 1
 bones/2/rest = Transform3D(0.912373, 0.409214, 0.0109051, -0.409359, 0.912056, 0.0240722, -9.5407e-05, -0.026427, 0.999651, 1.28831e-08, 0.457951, -1.78232e-08)
 bones/2/enabled = true
 bones/2/position = Vector3(1.28831e-08, 0.457951, -1.78232e-08)
-bones/2/rotation = Quaternion(-0.0645284, -0.339753, -0.466505, 0.814111)
+bones/2/rotation = Quaternion(-0.0615107, -0.341922, -0.465288, 0.814133)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/name = "forearm.r"
 bones/3/parent = 2
 bones/3/rest = Transform3D(0.999191, 0.0311243, 0.025463, -0.0401479, 0.808138, 0.587624, -0.00228827, -0.588171, 0.808734, -3.72365e-08, 1.112, -1.11759e-08)
 bones/3/enabled = true
 bones/3/position = Vector3(-3.72365e-08, 1.112, -1.11759e-08)
-bones/3/rotation = Quaternion(-0.389352, 0.00706632, -0.023601, 0.920759)
+bones/3/rotation = Quaternion(-0.396193, 0.00704381, -0.0240157, 0.917826)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "hand.r"
 bones/4/parent = 0
 bones/4/rest = Transform3D(-0.661167, 0.591641, 0.461324, -0.745907, -0.584373, -0.31958, 0.0805086, -0.5554, 0.827677, 2.15828, -1.5517, -0.277492)
 bones/4/enabled = true
-bones/4/position = Vector3(0.996473, -2.38332, 0.214308)
-bones/4/rotation = Quaternion(0.00475067, -0.0821581, 0.988512, -0.126771)
+bones/4/position = Vector3(0.994927, -2.37764, 0.217283)
+bones/4/rotation = Quaternion(0.00434934, -0.0793832, 0.98873, -0.126857)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "thumb1.r"
 bones/5/parent = 4
@@ -5088,7 +5088,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.942854, -0.631356, -3.83617, 3.85866, 0.330227, -1.00273, 0.474916, -3.93651, 0.531145, 0.967864, -2.76329, 0.177387)
+transform = Transform3D(-0.943845, -0.625421, -3.8369, 3.8611, 0.30884, -1.00014, 0.452571, -3.93919, 0.530767, 0.9664, -2.75779, 0.182378)
 bone_name = "weapon"
 bone_idx = 19
 
@@ -5253,7 +5253,7 @@ offset_top = 13.0
 offset_right = 422.0
 offset_bottom = 198.0
 text = "Enhanced muscle fibers allow for recovering energy when subjected to sudden tension.
-This should be most noticeable when the subject is parrying hits."
+This should be most noticeable when the specimen is parrying hits."
 label_settings = SubResource("LabelSettings_jas4v")
 autowrap_mode = 2
 

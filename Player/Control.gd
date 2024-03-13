@@ -16,7 +16,6 @@ var can_move := true
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	get_window().mode = Window.MODE_MAXIMIZED
 	stats.died.connect(handle_death)
 
 
