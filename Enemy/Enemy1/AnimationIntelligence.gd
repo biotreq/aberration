@@ -95,7 +95,7 @@ func receive_attack(_damage: float):
 		or current_state in active_attack_states
 	):
 		return
-	if !is_in_hurt_grace_period():
+	if can_be_staggered():
 		playback.start(&'Hurt')
 		last_staggered_at = Time.get_ticks_msec()
 
@@ -106,7 +106,7 @@ func commit_block(_state):
 
 var last_staggered_at := 0
 
-func is_in_hurt_grace_period():
+func can_be_staggered():
 	return Time.get_ticks_msec() <= last_staggered_at + 1500
 
 

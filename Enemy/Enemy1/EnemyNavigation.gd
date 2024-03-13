@@ -64,6 +64,7 @@ func _physics_process(delta):
 
 func wake_up():
 	ai.activate()
+	state = State.Fighting
 
 
 func look_for_player():
