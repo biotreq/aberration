@@ -85,3 +85,5 @@ func respawn():
 	stand_up.tween_property(self, 'can_move', true, 0.0)
 
 signal respawned()
+
+var keys := []

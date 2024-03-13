@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=167 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://hegltq7je4di" path="res://Interactable/Readable.tscn" id="13_mseo7"]
 [ext_resource type="PackedScene" uid="uid://d2ju6twhr22vp" path="res://Enemy/Enemy1/WeakEnemy.tscn" id="15_qqlrh"]
 [ext_resource type="PackedScene" uid="uid://bfbltnoh4hkub" path="res://Terrain/Clutter/DeadGuy.tscn" id="16_7hira"]
+[ext_resource type="PackedScene" uid="uid://c2fson7maq57p" path="res://Interactable/Key/IronKey.tscn" id="18_eno8d"]
+[ext_resource type="PackedScene" uid="uid://d0wbtog8pdyig" path="res://Interactable/Key/BrassKey.tscn" id="19_j0c7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1890,4 +1892,10 @@ transform = Transform3D(-0.642306, 0, -0.766448, 0, 1, 0, 0.766448, 0, -0.642306
 transform = Transform3D(0.295658, 0, 0.955294, 0, 1, 0, -0.955294, 0, 0.295658, -19.6928, 3.46916, 10.7896)
 
 [node name="DeadGuy" parent="." instance=ExtResource("16_7hira")]
-transform = Transform3D(0.0215182, 0, -0.999768, 0, 1, 0, 0.999768, 0, 0.0215182, -17.8802, 4.19801, 3.94995)
+transform = Transform3D(0.0215182, 0, -0.999768, 0, 1, 0, 0.999768, 0, 0.0215182, -17.8802, 4.19801, 3.70634)
+
+[node name="IronKey" parent="." instance=ExtResource("18_eno8d")]
+transform = Transform3D(0.878925, 0, -0.476959, 0, 1, 0, 0.476959, 0, 0.878925, -22.3495, 4.54053, -2.98915)
+
+[node name="BrassKey" parent="." instance=ExtResource("19_j0c7c")]
+transform = Transform3D(0.9728, 0, 0.231646, 0, 1, 0, -0.231646, 0, 0.9728, -9.63553, 0.356079, -18.5826)
