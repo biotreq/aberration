@@ -11,9 +11,9 @@ void vertex() {
 	const float soft_range = 1.0 / 1.3;
 	float soft_lambert = (lambert + 0.3) * soft_range;
 	const float max_distance = 10.0;
-	float ambient_light = (max_distance - distance_from_camera) / max_distance;
+	float ambient_light = max(0.0, (max_distance - distance_from_camera) / max_distance);
 
-	COLOR = COLOR * soft_lambert * ambient_light;
+	COLOR = COLOR * soft_lambert * ambient_light * ambient_light;
 }
 
 void fragment() {

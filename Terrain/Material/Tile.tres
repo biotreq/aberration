@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c0ay0npssfqfm"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_bjct5"]
+[ext_resource type="Texture2D" uid="uid://dsdqivulvuosu" path="res://Terrain/Material/tex/tile.png" id="2_dtun0"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bjct5")
+shader_parameter/albedo = ExtResource("2_dtun0")

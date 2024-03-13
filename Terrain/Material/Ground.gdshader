@@ -1,7 +1,8 @@
 shader_type spatial;
 render_mode unshaded;
 
-uniform sampler2D albedo: filter_nearest_mipmap, source_color;
+uniform sampler2D ground: filter_nearest_mipmap, source_color;
+uniform sampler2D cliff: filter_nearest_mipmap, source_color;
 
 void vertex() {
 	vec3 relative_position = (MODELVIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
@@ -11,9 +12,13 @@ void vertex() {
 	const float max_distance = 10.0;
 	float ambient_light = max(0.0, (max_distance - distance_from_camera) / max_distance);
 
-	COLOR = COLOR * lambert * ambient_light * ambient_light;
+	COLOR.r = lambert * ambient_light * ambient_light;
+	COLOR.g = NORMAL.y;
 }
 
 void fragment() {
-	ALBEDO = COLOR.rgb * texture(albedo, UV).rgb;
+	float factor = pow(COLOR.g, 4);
+	ALBEDO = texture(ground, UV).rgb * factor;
+	ALBEDO += texture(cliff, UV).rgb * (1.0 - factor);
+	ALBEDO = COLOR.r * ALBEDO;
 }

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wkcs5ehqj77x"
-path.s3tc="res://.godot/imported/brick2.tga-1a50da63890f450b2d0cb2d692c90fae.s3tc.ctex"
+uid="uid://cgat43xrwawlh"
+path.s3tc="res://.godot/imported/grass.png-9836e99a12b9c9bfdaebaa940275d8ae.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Terrain/Material/tex/brick2.tga"
-dest_files=["res://.godot/imported/brick2.tga-1a50da63890f450b2d0cb2d692c90fae.s3tc.ctex"]
+source_file="res://Terrain/Material/tex/grass.png"
+dest_files=["res://.godot/imported/grass.png-9836e99a12b9c9bfdaebaa940275d8ae.s3tc.ctex"]
 
 [params]
 
