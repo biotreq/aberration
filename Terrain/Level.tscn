@@ -1,4 +1,4 @@
-[gd_scene load_steps=154 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=157 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -10,6 +10,9 @@
 [ext_resource type="Material" uid="uid://c0ay0npssfqfm" path="res://Terrain/Material/Tile.tres" id="8_glm2a"]
 [ext_resource type="Material" uid="uid://v1mnv2g1qaqr" path="res://Terrain/Material/GrayFloor.tres" id="8_i2183"]
 [ext_resource type="Material" uid="uid://qhx5vrmnp8r" path="res://Terrain/Material/InteriorWall.tres" id="9_0vvlk"]
+[ext_resource type="PackedScene" uid="uid://wdqvbd2ewrtt" path="res://Terrain/Clutter/Table.tscn" id="11_ppjjv"]
+[ext_resource type="PackedScene" uid="uid://bspymw42wuai0" path="res://Enemy/Enemy1/Enemy1.tscn" id="12_ttb64"]
+[ext_resource type="PackedScene" uid="uid://hegltq7je4di" path="res://Interactable/Readable.tscn" id="13_mseo7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1473,7 +1476,7 @@ data = PackedVector3Array(-2.8908, 0.0607, -1.0858, 4.2332, 0.0607, 1.0858, -2.8
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_l7hs0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3574, 4.48886, 7.54295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7918, 4.48886, 6.07463)
 respawn_point = NodePath("../RespawnPoint")
 
 [node name="RespawnPoint" type="Node3D" parent="."]
@@ -1785,3 +1788,38 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_collision/Bridge_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_kcqe5")
+
+[node name="Table" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1619, 3.63591, 4.2624)
+
+[node name="Table2" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2145, 3.63591, 7.51698)
+
+[node name="Table4" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8828, 3.63591, 15.2175)
+
+[node name="Table5" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4399, 3.63591, -3.45785)
+
+[node name="Table6" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55459, -0.548406, -19.089)
+
+[node name="Table3" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.9652, 3.63591, 5.9634)
+
+[node name="Table7" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
+transform = Transform3D(0.381006, 0, -0.924573, 0, 1, 0, 0.924573, 0, 0.381006, 11.0392, 1.03888, 13.8792)
+
+[node name="Enemy1" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.77, 3.46916, 8.56314)
+
+[node name="Readable" parent="." instance=ExtResource("13_mseo7")]
+transform = Transform3D(-0.48481, 0, 0.87462, 0, 1, 0, -0.87462, 0, -0.48481, -25.5188, 4.52489, 6.33633)
+
+[node name="Readable2" parent="." instance=ExtResource("13_mseo7")]
+transform = Transform3D(-0.770413, 0, 0.637545, 0, 1, 0, -0.637545, 0, -0.770413, 11.0632, 1.92786, 12.7623)
+tooltip_id = &"PerfectParryTip"
+
+[node name="Readable3" parent="." instance=ExtResource("13_mseo7")]
+transform = Transform3D(-0.891006, 0, 0.453991, 0, 1, 0, -0.453991, 0, -0.891006, -25.7428, 4.52489, 14.7984)
+tooltip_id = &"ParryTip"

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://hnhl1vf7c1lr"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_loeob"]
+[ext_resource type="Texture2D" uid="uid://d4j61sfiqujhh" path="res://Interactable/tex/paper.png" id="2_kpg24"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_esgb6"]
+size = Vector2(0.285, 0.405)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_plp3u"]
+render_priority = 0
+shader = ExtResource("1_loeob")
+shader_parameter/albedo = ExtResource("2_kpg24")
+
+[node name="Paper" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_esgb6")
+surface_material_override/0 = SubResource("ShaderMaterial_plp3u")

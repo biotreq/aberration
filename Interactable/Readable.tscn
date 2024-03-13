@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://hegltq7je4di"]
+
+[ext_resource type="Script" path="res://Interactable/Readable.gd" id="1_x40vt"]
+[ext_resource type="PackedScene" uid="uid://hnhl1vf7c1lr" path="res://Interactable/Paper.tscn" id="2_resn0"]
+[ext_resource type="PackedScene" uid="uid://ik2mil0s8oek" path="res://Interactable/Glint.tscn" id="3_6u8wl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kohkv"]
+size = Vector3(0.285009, 0.117508, 0.4116)
+
+[node name="Readable" type="StaticBody3D"]
+script = ExtResource("1_x40vt")
+tooltip_id = &"HealTip"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0491819, 0)
+shape = SubResource("BoxShape3D_kohkv")
+
+[node name="Paper" parent="." instance=ExtResource("2_resn0")]
+
+[node name="light" parent="." instance=ExtResource("3_6u8wl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10292, 0.0827188, -0.182468)

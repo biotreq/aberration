@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ik2mil0s8oek"]
+
+[ext_resource type="PackedScene" uid="uid://b0wql7yygsb1k" path="res://Interactable/light.glb" id="1_x3188"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ww12c"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.47451, 0.47451, 0.47451, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[node name="light" instance=ExtResource("1_x3188")]
+
+[node name="Circle" parent="." index="0"]
+transform = Transform3D(0.125, 0, 0, 0, 0.125, 0, 0, 0, 0.125, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_ww12c")
