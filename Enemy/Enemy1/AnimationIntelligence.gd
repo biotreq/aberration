@@ -107,7 +107,7 @@ func commit_block(_state):
 var last_staggered_at := 0
 
 func can_be_staggered():
-	return Time.get_ticks_msec() <= last_staggered_at + 1500
+	return Time.get_ticks_msec() >= last_staggered_at + 1500
 
 
 const hurt_states := {

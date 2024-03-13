@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=165 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -13,8 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://wdqvbd2ewrtt" path="res://Terrain/Clutter/Table.tscn" id="11_ppjjv"]
 [ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="12_88a5j"]
 [ext_resource type="PackedScene" uid="uid://bspymw42wuai0" path="res://Enemy/Enemy1/Enemy1.tscn" id="12_ttb64"]
+[ext_resource type="PackedScene" uid="uid://bi1hl76afhwdb" path="res://Terrain/Clutter/Tube.tscn" id="13_arakr"]
 [ext_resource type="PackedScene" uid="uid://hegltq7je4di" path="res://Interactable/Readable.tscn" id="13_mseo7"]
 [ext_resource type="PackedScene" uid="uid://d2ju6twhr22vp" path="res://Enemy/Enemy1/WeakEnemy.tscn" id="15_qqlrh"]
+[ext_resource type="PackedScene" uid="uid://bfbltnoh4hkub" path="res://Terrain/Clutter/DeadGuy.tscn" id="16_7hira"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1515,7 +1517,7 @@ shader = ExtResource("12_88a5j")
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_l7hs0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7918, 4.48886, 6.07463)
+transform = Transform3D(0.999989, 0, -0.00471232, 0, 1, 0, 0.00471232, 0, 0.999989, -17.7918, 4.48886, 6.82)
 respawn_point = NodePath("../RespawnPoint")
 
 [node name="RespawnPoint" type="Node3D" parent="."]
@@ -1829,10 +1831,10 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_kcqe5")
 
 [node name="Table" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1619, 3.63591, 4.2624)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1619, 3.63591, 3.66047)
 
 [node name="Table2" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2145, 3.63591, 7.51698)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2145, 3.63591, 8.23961)
 
 [node name="Table4" parent="NavigationRegion3D" instance=ExtResource("11_ppjjv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8828, 3.63591, 15.2175)
@@ -1861,8 +1863,14 @@ mesh = SubResource("ArrayMesh_uscxj")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_765ua")
 
+[node name="Tube" parent="NavigationRegion3D" instance=ExtResource("13_arakr")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -21.3675, 3.46916, 15.0923)
+
+[node name="Tube2" parent="NavigationRegion3D" instance=ExtResource("13_arakr")]
+transform = Transform3D(-1, 0, -8.9407e-08, 0, 1, 0, 8.9407e-08, 0, -1, -19.3542, 3.46916, 15.0923)
+
 [node name="Enemy1" parent="." instance=ExtResource("12_ttb64")]
-transform = Transform3D(-0.031498, 0, 0.999504, 0, 1, 0, -0.999504, 0, -0.031498, -15.3521, 3.46916, 13.2474)
+transform = Transform3D(-0.031498, 0, 0.999504, 0, 1, 0, -0.999504, 0, -0.031498, -14.4885, 3.46916, 13.2474)
 
 [node name="Readable" parent="." instance=ExtResource("13_mseo7")]
 transform = Transform3D(-0.48481, 0, 0.87462, 0, 1, 0, -0.87462, 0, -0.48481, -25.5188, 4.52489, 6.33633)
@@ -1880,3 +1888,6 @@ transform = Transform3D(-0.642306, 0, -0.766448, 0, 1, 0, 0.766448, 0, -0.642306
 
 [node name="WeakEnemy3" parent="." instance=ExtResource("15_qqlrh")]
 transform = Transform3D(0.295658, 0, 0.955294, 0, 1, 0, -0.955294, 0, 0.295658, -19.6928, 3.46916, 10.7896)
+
+[node name="DeadGuy" parent="." instance=ExtResource("16_7hira")]
+transform = Transform3D(0.0215182, 0, -0.999768, 0, 1, 0, 0.999768, 0, 0.0215182, -17.8802, 4.19801, 3.94995)
