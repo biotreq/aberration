@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dugddaps2m6bj"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_uuicy"]
+[ext_resource type="Texture2D" uid="uid://3u43q58x35jq" path="res://Terrain/Material/tex/brick1.png" id="2_afp5y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uuicy")
+shader_parameter/albedo = ExtResource("2_afp5y")

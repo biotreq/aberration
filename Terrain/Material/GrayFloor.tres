@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://v1mnv2g1qaqr"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_0n56y"]
+[ext_resource type="Texture2D" uid="uid://dow8gutybdxpc" path="res://Terrain/Material/tex/grayfloor.png" id="2_vf0ef"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_0n56y")
+shader_parameter/albedo = ExtResource("2_vf0ef")

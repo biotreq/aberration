@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cgw4n2ita5i44"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_irwc5"]
+[ext_resource type="Texture2D" uid="uid://cg1hcfjdtnbvt" path="res://Terrain/Material/tex/cadavers.png" id="2_42nap"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_irwc5")
+shader_parameter/albedo = ExtResource("2_42nap")

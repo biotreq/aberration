@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bmu1uyapmax25"]
+
+[ext_resource type="Shader" path="res://Terrain/Material/Terrain.gdshader" id="1_bpyps"]
+[ext_resource type="Texture2D" uid="uid://65lqy6urpchr" path="res://Terrain/Material/tex/rockfloor.png" id="2_c4ecs"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_bpyps")
+shader_parameter/albedo = ExtResource("2_c4ecs")
