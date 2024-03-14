@@ -52,6 +52,8 @@ func _input(event):
 		camera.rotation.x = clampf(camera.rotation.x, -camera_clamp, camera_clamp)
 		arms.rotation.x = camera.rotation.x / 2
 		rotate_y(-event.relative.x * turn_rate)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 
 func process_action_input():

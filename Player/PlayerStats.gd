@@ -7,7 +7,7 @@ var health_regain := max_health
 @onready var stamina_regain := stamina
 @export var initial_health := 80.0
 
-const stamina_regen_rate := 20.0
+const stamina_regen_rate := 32.0
 const stamina_regain_tickdown_rate := 3.5
 const health_regain_tickdown_rate := 7.5
 const min_stamina := -20.0

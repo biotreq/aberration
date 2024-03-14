@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=178 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://Interactable/Door/DoorTrigger.gd" id="21_38dvk"]
 [ext_resource type="AudioStream" uid="uid://1woaoqqtsqq" path="res://Common/sfx/moving-low-frequencies-30842.mp3" id="22_fymhk"]
 [ext_resource type="Script" path="res://Terrain/Exit.gd" id="23_wn0sa"]
+[ext_resource type="PackedScene" uid="uid://cnyoeiowhy0u7" path="res://Enemy/Elite/Elite.tscn" id="24_7sc5p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -488,7 +489,7 @@ shadow_mesh = SubResource("ArrayMesh_0erot")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iwlr"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ixmai"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4guxl"]
 _surfaces = [{
 "aabb": AABB(-4.77506, -0.307163, -0.6782, 10.0313, 3.31211, 1.35641),
 "format": 4097,
@@ -532,7 +533,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(76, 205, 152, 192, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 76, 205, 152, 192, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 200, 50, 168, 64, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 200, 50, 168, 64, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 254, 255, 255, 191, 182, 227, 85, 192, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 169, 89, 244, 191, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 156, 175, 243, 190, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 182, 3, 117, 63, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 206, 247, 24, 64, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 175, 174, 116, 64, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 182, 227, 85, 192, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 169, 89, 244, 191, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 156, 175, 243, 190, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 182, 3, 117, 63, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 206, 247, 24, 64, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 175, 174, 116, 64, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ixmai")
+shadow_mesh = SubResource("ArrayMesh_4guxl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e64h"]
 
@@ -1176,7 +1177,7 @@ data = PackedVector3Array(0.3919, -0.0135, 0.4212, -0.3919, 1.0609, 0.4212, 0.39
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5gjs"]
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_unimk"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_sbvaf"]
 _surfaces = [{
 "aabb": AABB(-4.77506, -0.307163, -0.6782, 10.0313, 3.31211, 1.35641),
 "format": 4097,
@@ -1220,7 +1221,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray(76, 205, 152, 192, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191, 76, 205, 152, 192, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 200, 50, 168, 64, 42, 54, 39, 64, 251, 65, 254, 190, 255, 127, 255, 255, 255, 255, 255, 191, 200, 50, 168, 64, 42, 54, 39, 64, 251, 65, 254, 62, 255, 127, 255, 255, 255, 255, 255, 191)
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_unimk")
+shadow_mesh = SubResource("ArrayMesh_sbvaf")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mdlix"]
 data = PackedVector3Array(-4.7751, -0.3072, -0.6782, 5.2562, 3.0049, -0.6782, -4.7751, 3.0049, -0.6782, -4.7751, -0.3072, -0.6782, 5.2562, -0.3072, -0.6782, 5.2562, 3.0049, -0.6782, 5.2562, 3.0049, 0.4966, -4.7751, 3.0049, 0.6782, -4.7751, 3.0049, 0.4966, 5.2562, 3.0049, 0.4966, 5.2562, 3.0049, 0.6782, -4.7751, 3.0049, 0.6782, 5.2562, 3.0049, -0.6782, -4.7751, 3.0049, -0.4966, -4.7751, 3.0049, -0.6782, 5.2562, 3.0049, -0.6782, 5.2562, 3.0049, -0.4966, -4.7751, 3.0049, -0.4966, -4.7751, 3.0049, 0.4966, 5.2562, 2.6127, 0.4966, 5.2562, 3.0049, 0.4966, -4.7751, 3.0049, 0.4966, -4.7751, 2.6127, 0.4966, 5.2562, 2.6127, 0.4966, 5.2562, 3.0049, -0.4966, -4.7751, 2.6127, -0.4966, -4.7751, 3.0049, -0.4966, 5.2562, 3.0049, -0.4966, 5.2562, 2.6127, -0.4966, -4.7751, 2.6127, -0.4966, 5.2562, 2.6127, -0.4966, -4.7751, 2.6127, 0.4966, -4.7751, 2.6127, -0.4966, 5.2562, 2.6127, -0.4966, 5.2562, 2.6127, 0.4966, -4.7751, 2.6127, 0.4966)
@@ -2037,3 +2038,10 @@ transform = Transform3D(-0.254332, 0, 0.967117, 0, 1, 0, -0.967117, 0, -0.254332
 
 [node name="Enemy8" parent="." instance=ExtResource("12_ttb64")]
 transform = Transform3D(-0.740101, 0, -0.672496, 0, 1, 0, 0.672496, 0, -0.740101, -17.2811, 3.46916, -1.71551)
+
+[node name="Elite" parent="." instance=ExtResource("24_7sc5p")]
+transform = Transform3D(0.0228269, 0, 0.999739, 0, 1, 0, -0.999739, 0, 0.0228269, -3.1375, 3.39583, 13.2219)
+override_rotation_y = 4.712
+
+[node name="Elite2" parent="." instance=ExtResource("24_7sc5p")]
+transform = Transform3D(-0.0695302, 0, 0.99758, 0, 1, 0, -0.99758, 0, -0.0695302, 19.1599, -1.37289, -2.30243)

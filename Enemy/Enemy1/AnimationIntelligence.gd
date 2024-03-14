@@ -8,7 +8,7 @@ class_name AnimationIntelligence
 @onready var hitbox := $'../Hitbox' as Hitbox
 @onready var stats := $'../Stats' as Stats
 @onready var groan := $'../Groan' as AudioStreamPlayer3D
-const parry_tendency := 0.25
+var parry_tendency := 0.25
 
 func _ready():
 	current_state = playback.get_current_node()
@@ -119,8 +119,8 @@ const hurt_states := {
 }
 
 
-const max_poise := 15
-var poise := max_poise
+@export var max_poise := 15
+@onready var poise := max_poise
 const attack_poise_loss := 2
 const parry_poise_loss := 3
 const block_poise_loss := 1

@@ -12,7 +12,7 @@ void vertex() {
 	const float max_distance = 10.0;
 	float ambient_light = max(0.0, (max_distance - distance_from_camera) / max_distance);
 
-	COLOR.r = lambert * ambient_light * ambient_light;
+	COLOR.r = lambert * ambient_light;
 	COLOR.g = NORMAL.y;
 }
 

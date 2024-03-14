@@ -8,10 +8,10 @@ enum State {
 	Fighting,
 }
 
-const speed = 0.7
-const turn_rate = 0.05
-const max_range = 1.7
-const optimum_range = 1.4
+@export var speed := 0.7
+const turn_rate := 0.05
+@export var max_range := 1.7
+const optimum_range := 1.4
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var navigation_agent := $NavigationAgent3D as NavigationAgent3D
@@ -21,6 +21,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var stats := $Stats as Stats
 @onready var starting_position := global_position
 @onready var starting_rotation_y := rotation.y
+@export var override_rotation_y: float
 
 
 func _ready():
@@ -109,3 +110,5 @@ func reset():
 	stats.reset()
 	global_position = starting_position
 	rotation.y = starting_rotation_y
+	if override_rotation_y != 0.0:
+		rotation.y = override_rotation_y
