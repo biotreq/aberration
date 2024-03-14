@@ -89,4 +89,10 @@ signal respawned()
 func emit_respawned():
 	respawned.emit()
 
-var keys := [&'TestKey']
+var keys := []
+#var keys := [&'BrassKey', &'IronKey']
+
+
+func end():
+	var hud = $HUD as HUD
+	hud.fade_out()

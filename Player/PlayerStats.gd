@@ -5,6 +5,7 @@ class_name PlayerStats
 @onready var stamina := max_stamina
 var health_regain := max_health
 @onready var stamina_regain := stamina
+@export var initial_health := 80.0
 
 const stamina_regen_rate := 20.0
 const stamina_regain_tickdown_rate := 5.0
@@ -16,6 +17,7 @@ var health_regain_tween: Tween
 var stamina_regen_tween: Tween
 
 func _ready():
+	health = initial_health
 	health_regain = health
 	var weapon := $'%Weapon' as Weapon
 	# disgusting control handovers all around

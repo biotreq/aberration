@@ -16,7 +16,9 @@ func _ready():
 	stats.stamina_changed.connect(($'Stats/StaminaBar' as TextureProgressBar).set_value_no_signal)
 	stats.stamina_regain_changed.connect(($'Stats/StaminaRegainBar' as TextureProgressBar).set_value_no_signal)
 	get_tree().get_root().connect('size_changed', reposition_hud)
-	reposition_hud()
+	var tween := create_tween()
+	tween.tween_interval(0.1)
+	tween.tween_callback(reposition_hud)
 	stats.died.connect(black_fade.fade_out)
 
 
@@ -35,6 +37,9 @@ func reposition_hud():
 
 func fade_in():
 	black_fade.fade_in()
+
+func fade_out():
+	black_fade.fade_out()
 
 func play_respawn_blur():
 	blur_effect.play_respawn_blur()

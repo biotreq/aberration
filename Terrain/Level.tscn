@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=177 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://w1ht5qrco07g" path="res://Interactable/Door/Door.tscn" id="20_nvrc1"]
 [ext_resource type="Script" path="res://Interactable/Door/DoorTrigger.gd" id="21_38dvk"]
 [ext_resource type="AudioStream" uid="uid://1woaoqqtsqq" path="res://Common/sfx/moving-low-frequencies-30842.mp3" id="22_fymhk"]
+[ext_resource type="Script" path="res://Terrain/Exit.gd" id="23_wn0sa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -1559,6 +1560,9 @@ shadow_mesh = SubResource("ArrayMesh_j5wa6")
 render_priority = 0
 shader = ExtResource("12_88a5j")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_v0k8i"]
+size = Vector3(2.47264, 3.59491, 6.08296)
+
 [node name="Level" type="Node3D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("respawn_point") instance=ExtResource("1_l7hs0")]
@@ -1988,3 +1992,12 @@ transform = Transform3D(-0.632162, 0, 0.0599684, 0, 0.905, 0, -0.0599684, 0, -0.
 mesh = SubResource("ArrayMesh_ohxmw")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_76yll")
+
+[node name="Exit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7332, 0, -1.27765)
+collision_mask = 8
+script = ExtResource("23_wn0sa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.878115)
+shape = SubResource("BoxShape3D_v0k8i")

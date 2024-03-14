@@ -3,7 +3,9 @@ extends SubViewport
 
 func _ready():
 	get_tree().get_root().connect('size_changed', resize)
-	resize()
+	var tween := create_tween()
+	tween.tween_interval(0.1)
+	tween.tween_callback(resize)
 
 
 func resize():
