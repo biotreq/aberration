@@ -8,7 +8,7 @@ var health_regain := max_health
 @export var initial_health := 80.0
 
 const stamina_regen_rate := 20.0
-const stamina_regain_tickdown_rate := 5.0
+const stamina_regain_tickdown_rate := 3.5
 const health_regain_tickdown_rate := 7.5
 const min_stamina := -20.0
 
@@ -111,12 +111,12 @@ func _process(delta):
 	if is_ticking_down_health_regain:
 		health_regain = move_toward(health_regain, health, delta * health_regain_tickdown_rate)
 		health_regain_changed.emit(health_regain)
-		if health_regain == health:
+		if health_regain <= health:
 			is_ticking_down_health_regain = false
 	if is_ticking_down_stamina_regain:
 		stamina_regain = move_toward(stamina_regain, min(stamina, 0.0), delta * stamina_regain_tickdown_rate)
 		stamina_regain_changed.emit(stamina_regain)
-		if stamina_regain == stamina:
+		if stamina_regain <= stamina:
 			is_ticking_down_stamina_regain = false
 	if is_regenerating_stamina:
 		stamina = move_toward(stamina, max_stamina, delta * stamina_regen_rate)

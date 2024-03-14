@@ -84,7 +84,7 @@ func get_block_state() -> BlockState:
 
 
 func commit_block(state: BlockState):
-	stats.regain_stamina(12 if state == BlockState.Blocking else 30)
+	stats.regain_stamina(12 if state == BlockState.Blocking else 40)
 	playback.travel(&'Deflect')
 
 

@@ -2001,3 +2001,39 @@ script = ExtResource("23_wn0sa")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.878115)
 shape = SubResource("BoxShape3D_v0k8i")
+
+[node name="Enemy2" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2109, 0.781149, 14.6197)
+
+[node name="WeakEnemy" parent="." instance=ExtResource("15_qqlrh")]
+transform = Transform3D(-0.817175, 0, -0.576389, 0, 1, 0, 0.576389, 0, -0.817175, 8.39402, 3.42115, 13.2096)
+
+[node name="Enemy3" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4116, 0.774981, 6.03236)
+
+[node name="WeakEnemy4" parent="." instance=ExtResource("15_qqlrh")]
+transform = Transform3D(0.0353356, 0, 0.999375, 0, 1, 0, -0.999375, 0, 0.0353356, 13.293, -1.53103, -1.86251)
+
+[node name="WeakEnemy5" parent="." instance=ExtResource("15_qqlrh")]
+transform = Transform3D(0.710628, 0, -0.703568, 0, 1, 0, 0.703568, 0, 0.710628, -0.285714, -1.92328, 10.5511)
+
+[node name="WeakEnemy6" parent="." instance=ExtResource("15_qqlrh")]
+transform = Transform3D(0.313098, 0, -0.949721, 0, 1, 0, 0.949721, 0, 0.313098, -1.52227, -1.73541, 8.36575)
+
+[node name="Enemy4" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.78267, -0.785318, 9.85538)
+
+[node name="WeakEnemy7" parent="." instance=ExtResource("15_qqlrh")]
+transform = Transform3D(-0.994609, 0, -0.103695, 0, 1, 0, 0.103695, 0, -0.994609, -9.69833, -1.43113, -4.65477)
+
+[node name="Enemy5" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(-0.750803, 0, -0.660526, 0, 1, 0, 0.660526, 0, -0.750803, -12.1895, -0.85866, -18.9389)
+
+[node name="Enemy6" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(-0.680222, 0, 0.733006, 0, 1, 0, -0.733006, 0, -0.680222, -6.5176, -0.85866, -19.0973)
+
+[node name="Enemy7" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(-0.254332, 0, 0.967117, 0, 1, 0, -0.967117, 0, -0.254332, 7.77287, -1.9471, -3.45596)
+
+[node name="Enemy8" parent="." instance=ExtResource("12_ttb64")]
+transform = Transform3D(-0.740101, 0, -0.672496, 0, 1, 0, 0.672496, 0, -0.740101, -17.2811, 3.46916, -1.71551)
