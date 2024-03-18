@@ -8652,7 +8652,7 @@ bones/30/rotation = Quaternion(-0.702917, -0.0768648, 0.0768648, 0.702917)
 bones/30/scale = Vector3(1, 1, 1)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="elite/GuyArmature/Skeleton3D"]
-transform = Transform3D(2.42902, -1.6337, 0.288416, 0.0631534, -0.419954, -2.91066, 1.65776, 2.40976, -0.311714, -0.797451, 1.76985, -0.991037)
+transform = Transform3D(2.42902, -1.6337, 0.28841, 0.0631482, -0.419953, -2.91066, 1.65776, 2.40976, -0.311717, -0.797455, 1.76985, -0.991037)
 bone_name = "weapon"
 bone_idx = 15
 

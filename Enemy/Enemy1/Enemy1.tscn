@@ -7093,7 +7093,7 @@ holder = NodePath("../../../../..")
 libraries = {
 "": SubResource("AnimationLibrary_ajd5t")
 }
-blend_times = [&"Combo1_2a", &"ParryStun", 0.2, &"WalkForward", &"Combo1", 0.5, &"WalkForward", &"Combo2", 0.5, &"Combo1_4a", &"ParryStun", 0.2, &"Combo2_4a", &"ParryStun", 0.2, &"Counter_2a", &"ParryStun", 0.2, &"Idle", &"Activate", 0.5, &"Combo2_2a", &"ParryStun", 0.2]
+blend_times = [&"Combo2_2a", &"ParryStun", 0.2, &"Combo1_4a", &"ParryStun", 0.2, &"Counter_2a", &"ParryStun", 0.2, &"Combo2_4a", &"ParryStun", 0.2, &"Idle", &"Activate", 0.5, &"WalkForward", &"Combo2", 0.5, &"WalkForward", &"Combo1", 0.5, &"Combo1_2a", &"ParryStun", 0.2]
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_w7qtv")
