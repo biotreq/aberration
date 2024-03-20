@@ -87,6 +87,8 @@ func complete_attack(effect: Hitbox.AttackEffect):
 
 
 func receive_attack(_damage: float):
+	if stats.is_dead():
+		return
 	poise -= attack_poise_loss
 	if poise <= 0:
 		poise = max_poise
@@ -128,8 +130,27 @@ const block_poise_loss := 1
 
 func die():
 	playback.start(&'Die')
-	hitbox.notify_hurt.disconnect(receive_attack)
-	stats.died.disconnect(die)
+	death_checker = create_tween()
+	death_checker.bind_node(self)
+	death_checker.set_loops()
+	death_checker.tween_interval(0.5)
+	death_checker.tween_callback(ensure_death)
+
+
+var death_checker: Tween
+
+
+func ensure_death():
+	if playback.get_current_node() in dead_states:
+		death_checker.kill()
+	else:
+		playback.start(&'Die')
+
+
+const dead_states := {
+	&'Die': null,
+	&'Dead': null,
+}
 
 
 func reset():
