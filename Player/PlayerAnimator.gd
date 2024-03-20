@@ -8,6 +8,7 @@ class_name PlayerAnimator
 
 func _ready():
 	current_state = playback.get_current_node()
+	active = true
 
 
 var current_state: StringName
