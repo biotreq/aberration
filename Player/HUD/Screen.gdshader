@@ -7,24 +7,24 @@ uniform float red = 0.0;
 
 void fragment() {
 	float local_magnitude = max(0.0, (length(SCREEN_UV - vec2(0.5, 0.5)) - inner_radius) * magnitude);
-	float lod = local_magnitude * 0.25;
-	const float fourth = 1.0 / 4.0;
-	const float eighth = 1.0 / 8.0;
-	const float sixteenth = 1.0 / 16.0;
 
-	vec3 col = textureLod(screen_texture, SCREEN_UV, lod).rgb * fourth;
-	col += textureLod(screen_texture, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, 0.0) * local_magnitude, lod).rgb * eighth;
-	col += textureLod(screen_texture, SCREEN_UV - vec2(SCREEN_PIXEL_SIZE.x, 0.0) * local_magnitude, lod).rgb * eighth;
+	const float max_kernel_radius = 4.0;
 
-	col += textureLod(screen_texture, SCREEN_UV + vec2(0.0, SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * eighth;
-	col += textureLod(screen_texture, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * sixteenth;
-	col += textureLod(screen_texture, SCREEN_UV + vec2(-SCREEN_PIXEL_SIZE.x, SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * sixteenth;
+	float kernel_radius = min(max_kernel_radius, floor(local_magnitude));
+	float kernel_diameter = 1.0 + 2.0 * kernel_radius;
+	float contribution = 1.0 / (kernel_diameter * kernel_diameter);
 
-	col += textureLod(screen_texture, SCREEN_UV + vec2(0.0, -SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * eighth;
-	col += textureLod(screen_texture, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x, -SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * sixteenth;
-	col += textureLod(screen_texture, SCREEN_UV + vec2(-SCREEN_PIXEL_SIZE.x, -SCREEN_PIXEL_SIZE.y) * local_magnitude, lod).rgb * sixteenth;
+	vec2 step_size = SCREEN_PIXEL_SIZE * (local_magnitude - kernel_radius + 1.0);
+
+	vec3 color = vec3(0.0);
+
+	for (float x = -kernel_radius; x <= kernel_radius; x++) {
+		for (float y = -kernel_radius; y <= kernel_radius; y++) {
+			color += texture(screen_texture, SCREEN_UV + vec2(x, y) * step_size).rgb * contribution;
+		}
+	}
 	
 	float local_green_blue = (1.0 - red * length(SCREEN_UV - vec2(0.5, 0.5)));
 
-	COLOR.rgb = col * vec3(1.0, local_green_blue, local_green_blue);
+	COLOR.rgb = color * vec3(1.0, local_green_blue, local_green_blue);
 }

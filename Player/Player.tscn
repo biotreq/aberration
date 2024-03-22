@@ -4620,7 +4620,7 @@ graph_offset = Vector2(-262, 65)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iig6w"]
 shader = ExtResource("15_xtm78")
 shader_parameter/inner_radius = 0.3
-shader_parameter/magnitude = 50.0
+shader_parameter/magnitude = 20.0
 shader_parameter/red = 0.0
 
 [sub_resource type="Gradient" id="Gradient_v0nr6"]
@@ -5057,7 +5057,7 @@ skin = SubResource("Skin_s87yw")
 surface_material_override/0 = SubResource("ShaderMaterial_dirsc")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Viewport/Arms/ArmArmature/Skeleton3D"]
-transform = Transform3D(-0.942336, -0.634342, -3.8358, 3.85738, 0.340993, -1.00403, 0.486163, -3.93511, 0.53133, 0.968615, -2.7661, 0.174845)
+transform = Transform3D(-0.94234, -0.634342, -3.8358, 3.85738, 0.340993, -1.00403, 0.486163, -3.93511, 0.53133, 0.968615, -2.76611, 0.174845)
 bone_name = "weapon"
 bone_idx = 19
 
