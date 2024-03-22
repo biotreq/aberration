@@ -22,7 +22,7 @@ func _process(_delta):
 		if current_state in attack_states:
 			weapon.deactivate()
 		if new_state in block_up_states:
-			stats.spend_stamina(20)
+			stats.spend_stamina(10)
 		is_attack_queued = false
 		is_block_queued = false
 		current_state = new_state
@@ -46,8 +46,6 @@ func request_attack():
 
 
 func request_block():
-	if !stats.can_use_stamina():
-		return
 	if current_state in action_request_states:
 		if current_state == &'Attack1_3a' or current_state == &'Attack2_2a':
 			is_block_queued = true
@@ -85,7 +83,7 @@ func get_block_state() -> BlockState:
 
 
 func commit_block(state: BlockState):
-	stats.regain_stamina(12 if state == BlockState.Blocking else 40)
+	stats.regain_stamina(20 if state == BlockState.Blocking else 40)
 	playback.travel(&'Deflect')
 
 

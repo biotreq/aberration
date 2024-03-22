@@ -14,7 +14,7 @@ func _ready():
 	stats.health_changed.connect(($'Stats/HealthBar' as TextureProgressBar).set_value_no_signal)
 	stats.health_regain_changed.connect(($'Stats/HealthRegainBar' as TextureProgressBar).set_value_no_signal)
 	stats.stamina_changed.connect(($'Stats/StaminaBar' as TextureProgressBar).set_value_no_signal)
-	stats.stamina_regain_changed.connect(($'Stats/StaminaRegainBar' as TextureProgressBar).set_value_no_signal)
+	stats.stamina_changed.connect(($'Stats/NegativeStaminaBar' as TextureProgressBar).set_value_no_signal)
 	get_tree().get_root().connect('size_changed', reposition_hud)
 	var tween := create_tween()
 	tween.tween_interval(0.1)
