@@ -26,6 +26,8 @@ func _physics_process(delta):
 	var input_dir := Input.get_vector('move_left', 'move_right', 'move_forward', 'move_back')
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction and can_move:
+		if input_dir.y > 0:
+			direction *= 0.5
 		var is_running := Input.is_action_pressed('run')
 		var move_speed = speed * 1.8 if is_running else speed
 		velocity.x = direction.x * move_speed
