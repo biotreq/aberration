@@ -32,13 +32,13 @@ func deactivate():
 
 
 func spark():
-	block_effect.emitting = true
+	block_effect.restart()
 	sfx.play_clash()
 
 
 func big_spark():
-	block_effect.emitting = true
-	parry_effect.emitting = true
+	block_effect.restart()
+	parry_effect.restart()
 	flare.scale = Vector3.ONE * 0.3
 	var tween := create_tween()
 	tween.tween_property(flare, 'scale', Vector3.ZERO, 0.1)
