@@ -8415,6 +8415,7 @@ path_desired_distance = 1.2
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource("10_2mvcf")
+max_health = 120.0
 
 [node name="SightLine" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57434, 0)
