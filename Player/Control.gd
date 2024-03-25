@@ -11,6 +11,7 @@ var gravity = ProjectSettings.get_setting('physics/3d/default_gravity')
 @onready var stats := $Stats as PlayerStats
 @onready var viewport := $Viewport as Node3D
 @onready var viewport_position := viewport.position
+@onready var key_sound := $KeyPickup as AudioStreamPlayer
 @export var respawn_point: Node3D
 var can_move := true
 

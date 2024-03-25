@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://go1ehors68tj"]
+[gd_scene load_steps=96 format=3 uid="uid://go1ehors68tj"]
 
 [ext_resource type="Script" path="res://Player/Control.gd" id="1_j5cev"]
 [ext_resource type="Script" path="res://Common/Hitbox.gd" id="2_cgiu2"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Player/HUD/BlackFade.gd" id="13_xtd5n"]
 [ext_resource type="Shader" path="res://Player/HUD/Screen.gdshader" id="15_xtm78"]
 [ext_resource type="FontFile" uid="uid://bf5h2jkhjjon7" path="res://Font/Lancelot-Regular.ttf" id="17_ytgrr"]
+[ext_resource type="AudioStream" uid="uid://brhp6d0ykwec2" path="res://Common/sfx/key-get-39925.mp3" id="18_8wu47"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g0vm1"]
 radius = 0.423208
@@ -5232,3 +5233,6 @@ text = "Try to time your parries well.
 Perfect parries will stargger your opponent, giving you space to land hits."
 label_settings = SubResource("LabelSettings_jas4v")
 autowrap_mode = 2
+
+[node name="KeyPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_8wu47")
