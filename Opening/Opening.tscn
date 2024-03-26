@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://d3x8b6ds5w6fj"]
+[gd_scene load_steps=33 format=3 uid="uid://d3x8b6ds5w6fj"]
 
 [ext_resource type="Material" uid="uid://qhx5vrmnp8r" path="res://Terrain/Material/InteriorWall.tres" id="1_t38tk"]
 [ext_resource type="Script" path="res://Opening/Opening.gd" id="1_yperg"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/HUD/BlackFade.gd" id="7_t2xq5"]
 [ext_resource type="Script" path="res://Opening/PressStart.gd" id="8_217nn"]
 [ext_resource type="FontFile" uid="uid://bf5h2jkhjjon7" path="res://Font/Lancelot-Regular.ttf" id="9_3p18d"]
+[ext_resource type="PackedScene" uid="uid://btnmaaac4gp1q" path="res://Common/ClashEffects/CacheParticles.tscn" id="10_prhaa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3s6y"]
 
@@ -557,3 +558,6 @@ offset_bottom = 72.0
 text = "Press [Enter] to start the game"
 label_settings = SubResource("LabelSettings_qxmr3")
 autowrap_mode = 2
+
+[node name="CacheParticles" parent="." instance=ExtResource("10_prhaa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8859, -13.6196, 0)

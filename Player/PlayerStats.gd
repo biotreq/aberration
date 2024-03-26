@@ -6,7 +6,7 @@ class_name PlayerStats
 var health_regain := max_health
 @export var initial_health := 80.0
 
-const stamina_regen_rate := 8.0
+const stamina_regen_rate := 15.0
 const health_regain_tickdown_rate := 7.5
 const min_stamina := -40.0
 

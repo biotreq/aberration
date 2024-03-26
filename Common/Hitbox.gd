@@ -34,7 +34,7 @@ func attack(damage: float, attacker: Node3D) -> AttackEffect:
 				return AttackEffect.Parried
 	stats.lose_health(damage)
 	notify_hurt.emit(damage)
-	blood_splatter.emitting = true
+	blood_splatter.restart()
 	hit_effect.play_pitched()
 	return AttackEffect.Hurt
 

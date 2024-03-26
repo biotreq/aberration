@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://ceyck0mmoxbai"]
+[gd_scene load_steps=179 format=3 uid="uid://ceyck0mmoxbai"]
 
 [ext_resource type="PackedScene" uid="uid://go1ehors68tj" path="res://Player/Player.tscn" id="1_l7hs0"]
 [ext_resource type="Material" uid="uid://cgw4n2ita5i44" path="res://Terrain/Material/Corpses.tres" id="2_1mvn0"]
@@ -24,6 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://1woaoqqtsqq" path="res://Common/sfx/moving-low-frequencies-30842.mp3" id="22_fymhk"]
 [ext_resource type="Script" path="res://Terrain/Exit.gd" id="23_wn0sa"]
 [ext_resource type="PackedScene" uid="uid://cnyoeiowhy0u7" path="res://Enemy/Elite/Elite.tscn" id="24_7sc5p"]
+[ext_resource type="PackedScene" uid="uid://btnmaaac4gp1q" path="res://Common/ClashEffects/CacheParticles.tscn" id="25_u3fr2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fv68o"]
 
@@ -2045,3 +2046,6 @@ override_rotation_y = 4.712
 
 [node name="Elite2" parent="." instance=ExtResource("24_7sc5p")]
 transform = Transform3D(-0.0695302, 0, 0.99758, 0, 1, 0, -0.99758, 0, -0.0695302, 19.1599, -1.37289, -2.30243)
+
+[node name="CacheParticles" parent="." instance=ExtResource("25_u3fr2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.92361, 0)

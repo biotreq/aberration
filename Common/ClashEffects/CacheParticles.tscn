@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://btnmaaac4gp1q"]
+
+[ext_resource type="Script" path="res://Common/ClashEffects/CacheParticles.gd" id="1_gty22"]
+[ext_resource type="PackedScene" uid="uid://b2k6o8ydgy3aw" path="res://Common/ClashEffects/Blood.tscn" id="2_gla2u"]
+[ext_resource type="PackedScene" uid="uid://u3jwick8y2h2" path="res://Common/ClashEffects/BlockEffect.tscn" id="3_3r230"]
+[ext_resource type="PackedScene" uid="uid://b2i3jt627r06v" path="res://Common/ClashEffects/ParryEffect.tscn" id="4_ddmuj"]
+
+[node name="CacheParticles" type="Node3D"]
+script = ExtResource("1_gty22")
+
+[node name="Blood" parent="." instance=ExtResource("2_gla2u")]
+
+[node name="BlockEffect" parent="." instance=ExtResource("3_3r230")]
+
+[node name="ParryEffect" parent="." instance=ExtResource("4_ddmuj")]
